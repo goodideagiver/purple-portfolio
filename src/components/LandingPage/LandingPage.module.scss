@@ -11,10 +11,10 @@
 
 .wordsContainer {
   display: flex;
-  width: min(90%, 1000px);
+  width: min(70%, 1000px);
   flex-wrap: wrap;
   justify-content: space-between;
-  font-size: 2.5rem;
+  font-size: 1.2rem;
   gap: 1rem;
   font-family: 'Montserrat', sans-serif;
   flex-direction: column;
@@ -23,18 +23,12 @@
 
 @media screen and (min-width: 414px) {
   .wordsContainer {
-    font-size: 3rem;
+    font-size: 2rem;
   }
 }
 
 @media screen and (min-width: 768px) {
   .wordsContainer {
-    font-size: 5rem;
-  }
-}
-
-@media screen and (min-width: 1024px) {
-  .wordsContainer {
-    font-size: 6rem;
+    font-size: 3rem;
   }
 }

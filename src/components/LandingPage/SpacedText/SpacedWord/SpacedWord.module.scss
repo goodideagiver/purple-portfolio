@@ -1,7 +1,9 @@
 .root {
   display: flex;
   justify-content: space-between;
-  flex: 1 0 100%;
+  flex: 1 1 160px;
+  border-bottom: 3px gray solid;
+  padding: 0 0 0.2em 0;
 }
 
 .letter {

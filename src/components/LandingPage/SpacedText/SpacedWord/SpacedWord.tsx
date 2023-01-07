@@ -5,10 +5,11 @@ type Props = {
   isHovered: boolean
 }
 
+const positionMultiplier = 60
+const rotationMultiplier = 30
+
 export const SpacedWord = ({ word, isHovered }: Props) => {
   const wordInSpans = word.split('').map((letter, index) => {
-    const positionMultiplier = 60
-    const rotationMultiplier = 30
     const style = isHovered
       ? {
           transform: `translate(${
