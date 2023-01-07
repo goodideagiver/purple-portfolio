@@ -1,6 +1,6 @@
-import clsx from 'clsx'
 import classes from './LandingPage.module.scss'
-import { Props as wordsForSection, SpacedText } from './SpacedText/SpacedText'
+import { Section } from './Section/Section'
+import { Props as wordsForSection } from './SpacedText/SpacedText'
 
 const firstSection: wordsForSection[] = [
   {
@@ -60,18 +60,8 @@ const thirdSection: wordsForSection[] = [
 ]
 
 export const LandingPage = () => {
-  const wordContainerCss = clsx(classes.wordsContainer, 'words-container')
-
   const sections = [firstSection, secondSection, thirdSection].map(
-    (section, index) => (
-      <div key={index} className={classes.root}>
-        <div className={wordContainerCss}>
-          {section.map((word, index) => (
-            <SpacedText key={word.text + index} {...word} />
-          ))}
-        </div>
-      </div>
-    )
+    (section, index) => <Section key={index} words={section} />
   )
 
   return <div className={classes.scrollSnap}>{sections}</div>

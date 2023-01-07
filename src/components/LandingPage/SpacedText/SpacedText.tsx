@@ -8,9 +8,10 @@ export type Props = {
   href?: string
   external?: boolean
   text: string
+  visible?: boolean
 }
 
-export const SpacedText = ({ href, text, external }: Props) => {
+export const SpacedText = ({ href, text, external, visible }: Props) => {
   const [isHovered, setIsHovered] = useState(false)
 
   const hoverStartHandler = () => {
@@ -26,7 +27,9 @@ export const SpacedText = ({ href, text, external }: Props) => {
     <SpacedWord isHovered={isHovered} word={word} key={word + index} />
   ))
 
-  const textCss = clsx(classes.root, 'spaced-text')
+  const textCss = clsx(classes.root, 'spaced-text', {
+    'spaced-text--visible': visible,
+  })
 
   if (href) {
     if (external) {
