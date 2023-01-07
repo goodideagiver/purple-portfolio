@@ -2,12 +2,16 @@
   &:hover,
   &:focus-within {
     .spaced-text {
-      opacity: 0.5;
-      transition: opacity 0.2s ease-in-out;
+      opacity: 0.2;
+
       &:hover,
       &:focus {
         opacity: 1;
       }
     }
   }
+}
+
+.spaced-text {
+  transition: opacity 0.2s ease-in-out;
 }

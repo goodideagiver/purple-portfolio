@@ -1,5 +1,6 @@
 import clsx from 'clsx'
 import Link from 'next/link'
+import { useState } from 'react'
 import classes from './SpacedText.module.scss'
 import { SpacedWord } from './SpacedWord/SpacedWord'
 
@@ -10,9 +11,19 @@ export type Props = {
 }
 
 export const SpacedText = ({ href, text, external }: Props) => {
+  const [isHovered, setIsHovered] = useState(false)
+
+  const hoverStartHandler = () => {
+    setIsHovered(true)
+  }
+
+  const hoverEndHandler = () => {
+    setIsHovered(false)
+  }
+
   const splitIntoWords = text.split(' ')
   const words = splitIntoWords.map((word, index) => (
-    <SpacedWord word={word} key={word + index} />
+    <SpacedWord isHovered={isHovered} word={word} key={word + index} />
   ))
 
   const textCss = clsx(classes.root, 'spaced-text')
@@ -25,17 +36,32 @@ export const SpacedText = ({ href, text, external }: Props) => {
           target='_blank'
           rel='noopener noreferrer'
           className={textCss}
+          onMouseEnter={hoverStartHandler}
+          onMouseLeave={hoverEndHandler}
         >
           {words}
         </a>
       )
     }
     return (
-      <Link className={textCss} href={href}>
+      <Link
+        onMouseEnter={hoverStartHandler}
+        onMouseLeave={hoverEndHandler}
+        className={textCss}
+        href={href}
+      >
         {words}
       </Link>
     )
   }
 
-  return <div className={textCss}>{words}</div>
+  return (
+    <div
+      onMouseEnter={hoverStartHandler}
+      onMouseLeave={hoverEndHandler}
+      className={textCss}
+    >
+      {words}
+    </div>
+  )
 }

@@ -5,14 +5,36 @@
   place-items: center;
 }
 
+.scrollSnap {
+  scroll-snap-type: y mandatory;
+}
+
 .wordsContainer {
   display: flex;
-  width: min(90%, 800px);
+  width: min(90%, 1000px);
   flex-wrap: wrap;
   justify-content: space-between;
-  font-size: 6rem;
+  font-size: 2.5rem;
   gap: 1rem;
   font-family: 'Montserrat', sans-serif;
-  border: 1px solid white;
   flex-direction: column;
+  text-transform: uppercase;
+}
+
+@media screen and (min-width: 414px) {
+  .wordsContainer {
+    font-size: 3rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .wordsContainer {
+    font-size: 5rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .wordsContainer {
+    font-size: 6rem;
+  }
 }

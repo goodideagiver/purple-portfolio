@@ -1,5 +1,9 @@
 .root {
   display: flex;
   justify-content: space-between;
-  flex: 1;
+  flex: 1 0 100%;
+}
+
+.letter {
+  transition: 0.8s ease-in-out;
 }

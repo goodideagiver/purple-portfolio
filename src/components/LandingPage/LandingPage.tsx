@@ -1,8 +1,8 @@
 import clsx from 'clsx'
 import classes from './LandingPage.module.scss'
-import { Props, SpacedText } from './SpacedText/SpacedText'
+import { Props as wordsForSection, SpacedText } from './SpacedText/SpacedText'
 
-const words: Props[] = [
+const firstSection: wordsForSection[] = [
   {
     text: 'Karol Bartkiewicz',
   },
@@ -15,11 +15,6 @@ const words: Props[] = [
     external: true,
   },
   {
-    text: 'LinkedIn',
-    href: 'https://www.linkedin.com/in/karol-bartkiewicz/',
-    external: true,
-  },
-  {
     text: 'About',
     href: '/about',
   },
@@ -28,16 +23,56 @@ const words: Props[] = [
   },
 ]
 
+const secondSection: wordsForSection[] = [
+  {
+    text: 'Projects',
+  },
+  {
+    text: 'Bewebdev.tech',
+    href: 'https://bewebdev.tech',
+    external: true,
+  },
+  {
+    text: 'How to ask good questions',
+    href: 'https://goodideagiver.github.io/how-to-ask-good-questions/',
+    external: true,
+  },
+]
+
+const thirdSection: wordsForSection[] = [
+  {
+    text: 'Contact',
+  },
+  {
+    text: 'E-mail',
+    href: 'mailto:contact@purpleblack.dev',
+  },
+  {
+    text: 'Discord',
+    href: 'https://discord.gg/kGsCDes7VU',
+    external: true,
+  },
+  {
+    text: 'LinkedIn',
+    href: 'https://www.linkedin.com/in/karol-bartkiewicz/',
+    external: true,
+  },
+]
+
 export const LandingPage = () => {
   const wordContainerCss = clsx(classes.wordsContainer, 'words-container')
 
-  return (
-    <div className={classes.root}>
-      <div className={wordContainerCss}>
-        {words.map((word, index) => (
-          <SpacedText key={word.text + index} {...word} />
-        ))}
+  const sections = [firstSection, secondSection, thirdSection].map(
+    (section, index) => (
+      <div key={index} className={classes.root}>
+        <div className={wordContainerCss}>
+          {section.map((word, index) => (
+            <SpacedText key={word.text + index} {...word} />
+          ))}
+        </div>
       </div>
-    </div>
+    )
   )
+
+  return <div className={classes.scrollSnap}>{sections}</div>
 }
