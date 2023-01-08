@@ -1,6 +1,6 @@
 import { RefObject, useEffect, useState } from 'react'
 
-export const useIsVisible = (ref: RefObject) => {
+export const useIsVisible = <T extends HTMLElement>(ref: RefObject<T>) => {
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {

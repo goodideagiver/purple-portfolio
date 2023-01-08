@@ -15,8 +15,8 @@ const firstSection: wordsForSection[] = [
     external: true,
   },
   {
-    text: 'About',
-    href: '/about',
+    text: 'TIL',
+    href: '/til',
   },
   {
     text: new Date().getFullYear().toString(),
