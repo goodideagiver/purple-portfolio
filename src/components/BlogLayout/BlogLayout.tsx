@@ -20,7 +20,7 @@ export const BlogLayout = ({ meta, children }: Props) => {
     <>
       <HeadSeo meta={meta} />
       <MinimalLayout>
-        <NavigateBackLink />
+        <NavigateBackLink prevUrl='/til' />
         <main className={classes.main}>{children}</main>
       </MinimalLayout>
     </>

@@ -1,21 +1,19 @@
 import Link from 'next/link'
-import { useRouter } from 'next/router'
 import classes from './NavigateBackLink.module.scss'
 
-export const NavigateBackLink = () => {
-  const router = useRouter()
-  console.log(router)
+type Props = {
+  prevUrl?: string
+}
 
-  const handleClickBack = () => {
-    router.back()
-  }
-
+export const NavigateBackLink = ({ prevUrl }: Props) => {
   return (
     <nav className={classes.root}>
-      <Link className={classes.link} href={''} onClick={handleClickBack}>
-        <span aria-hidden='true'>{`< `}</span>
-        Back
-      </Link>
+      {!!prevUrl && (
+        <Link className={classes.link} href={prevUrl}>
+          <span aria-hidden='true'>{`< `}</span>
+          Back
+        </Link>
+      )}
       <Link className={classes.link} href={'/'}>
         Home
       </Link>
