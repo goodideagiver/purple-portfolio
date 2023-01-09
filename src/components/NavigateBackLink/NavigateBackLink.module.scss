@@ -1,3 +1,13 @@
 .root {
-  background-color: red;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.link {
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  font-weight: bold;
+  &:hover {
+    background-color: #ffffff20;
+  }
 }
