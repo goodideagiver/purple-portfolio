@@ -21,8 +21,15 @@ export const SpacedWord = ({ word, isHovered }: Props) => {
           }deg)`,
         }
       : {}
+
+    const hoverProp = isHovered ? { 'data-hover': '' } : {}
     return (
-      <span className={classes.letter} key={letter + index} style={style}>
+      <span
+        {...hoverProp}
+        className={classes.letter}
+        key={letter + index}
+        style={style}
+      >
         {letter}
       </span>
     )
