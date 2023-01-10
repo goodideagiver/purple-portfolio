@@ -19,6 +19,7 @@ export const SpacedWord = ({ word, isHovered }: Props) => {
           }px) rotate(${
             Math.random() * rotationMultiplier - rotationMultiplier / 2
           }deg)`,
+          transitionDelay: `${index * 0.03}s`,
         }
       : {}
 
