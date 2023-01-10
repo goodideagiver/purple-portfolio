@@ -3,7 +3,7 @@ import Head from 'next/head'
 type Meta = {
   title: string
   description: string
-  image: string
+  image?: string
 }
 
 type Props = {
