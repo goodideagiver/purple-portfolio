@@ -6,7 +6,13 @@ import {
   useSpring,
   useTransform,
 } from 'framer-motion'
-import { useCallback, useLayoutEffect, useRef, useState } from 'react'
+import {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from 'react'
 import classes from './SideScroll.module.scss'
 
 type Props = {
@@ -16,6 +22,7 @@ type Props = {
 export const SideScroll = ({ children }: Props) => {
   const scrollRef = useRef<HTMLDivElement>(null)
   const ghostRef = useRef(null)
+  const stickyContainerRef = useRef<HTMLDivElement>(null)
   const [scrollRange, setScrollRange] = useState(0)
   const [viewportW, setViewportW] = useState(0)
 
@@ -46,17 +53,17 @@ export const SideScroll = ({ children }: Props) => {
     [0, 1],
     [0, -scrollRange + viewportW]
   )
-  const physics = { damping: 15, mass: 0.27, stiffness: 55 }
+  const physics = { damping: 15, mass: 0.27, stiffness: 100 }
   const spring = useSpring(transform, physics)
 
   return (
-    <div ref={scrollRef}>
-      <div className={classes.scroll}>
+    <div className={classes.root} ref={scrollRef}>
+      <div ref={stickyContainerRef} className={classes.scroll}>
         <motion.section
           style={{ x: spring }}
           className={classes.thumbnailsContainer}
         >
-          <div className={classes.thumbnails}>{children}</div>
+          {children}
         </motion.section>
       </div>
       <div
