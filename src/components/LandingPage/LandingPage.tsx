@@ -89,6 +89,7 @@ export const LandingPage = () => {
           )
         )}
       </SideScroll>
+      {sections}
     </div>
   )
 }

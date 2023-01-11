@@ -6,28 +6,31 @@ import {
   useSpring,
   useTransform,
 } from 'framer-motion'
-import {
-  useCallback,
-  useEffect,
-  useLayoutEffect,
-  useRef,
-  useState,
-} from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import classes from './SideScroll.module.scss'
 
 type Props = {
   children: ReactNode
   offset?: number
+  scrollDistanceMultiplier?: number
 }
 
-export const SideScroll = ({ children, offset = 0 }: Props) => {
+export const SideScroll = ({
+  children,
+  offset = 0,
+  scrollDistanceMultiplier = 2,
+}: Props) => {
   const scrollRef = useRef<HTMLDivElement>(null)
   const ghostRef = useRef(null)
   const stickyContainerRef = useRef<HTMLDivElement>(null)
   const [scrollRange, setScrollRange] = useState(0)
   const [viewportW, setViewportW] = useState(0)
 
-  useLayoutEffect(() => {
+  const { scrollYProgress } = useScroll({
+    target: scrollRef,
+  })
+
+  useEffect(() => {
     scrollRef &&
       scrollRef.current &&
       setScrollRange(scrollRef.current.scrollWidth)
@@ -39,20 +42,16 @@ export const SideScroll = ({ children, offset = 0 }: Props) => {
     }
   }, [])
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const resizeObserver = new ResizeObserver((entries) => onResize(entries))
     ghostRef && ghostRef.current && resizeObserver.observe(ghostRef.current)
     return () => resizeObserver.disconnect()
   }, [onResize])
 
-  const { scrollYProgress } = useScroll({
-    target: scrollRef,
-  })
-
   const transform = useTransform(
     scrollYProgress,
     [0, 1],
-    [0 + offset, -scrollRange + viewportW - offset]
+    [0 + offset, -scrollRange - viewportW * 2 + offset]
   )
   const physics = { damping: 15, mass: 0.27, stiffness: 100 }
   const spring = useSpring(transform, physics)
@@ -69,7 +68,7 @@ export const SideScroll = ({ children, offset = 0 }: Props) => {
       </div>
       <div
         ref={ghostRef}
-        style={{ height: scrollRange }}
+        style={{ height: (scrollRange + viewportW) * scrollDistanceMultiplier }}
         className={classes.ghost}
       />
     </div>
