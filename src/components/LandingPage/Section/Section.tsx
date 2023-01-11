@@ -12,7 +12,7 @@ export const Section = ({ words }: Props) => {
   const wordContainerCss = clsx(classes.wordsContainer, 'words-container')
 
   const ref = useRef(null)
-  const { scrollYProgress, scrollY } = useScroll({
+  const { scrollYProgress } = useScroll({
     target: ref,
     offset: ['end end', '70% 70%'],
   })
@@ -26,11 +26,7 @@ export const Section = ({ words }: Props) => {
     <div className={classes.root}>
       <motion.div
         ref={ref}
-        // initial={{ opacity: 0, scale: 0.8 }}
-        // whileInView={{ opacity: 1, scale: 1 }}
-        // transition={{ type: 'spring', stiffness: 100, duration: 10 }}
-        // viewport={{ once: false, margin: '-200px' }}
-        style={{ opacity: springProgress, scale: springProgress }}
+        style={{ opacity: springProgress }}
         className={wordContainerCss}
       >
         {words.map((word, index) => (
