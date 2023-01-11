@@ -1,3 +1,4 @@
+import { useEffect, useState, useRef } from 'react'
 import { SideScroll } from '../SideScroll/SideScroll'
 import classes from './LandingPage.module.scss'
 import { Section } from './Section/Section'
@@ -61,17 +62,32 @@ const thirdSection: wordsForSection[] = [
 ]
 
 export const LandingPage = () => {
+  const [offset, setOffset] = useState(0)
+  const promoSquareRef = useRef<HTMLDivElement>(null)
   const sections = [firstSection, secondSection, thirdSection].map(
     (section, index) => <Section key={index} words={section} />
   )
 
+  useEffect(() => {
+    const countOfSquaresThatWillFitIntoViewport = window.innerWidth / 700
+    const fullSquaresThatWillFit = Math.floor(
+      countOfSquaresThatWillFitIntoViewport
+    )
+    const offsetOfSquares =
+      ((countOfSquaresThatWillFitIntoViewport - fullSquaresThatWillFit) *
+        (promoSquareRef?.current?.offsetWidth || 700)) /
+      2
+    setOffset(offsetOfSquares)
+  }, [])
+
   return (
     <div className={classes.scrollSnap}>
       {sections}
-      <SideScroll offset={window.innerWidth / 2}>
+      <SideScroll offset={offset}>
         {['Best dev in the world', 'React', 'SCSS', 'Next.js'].map(
           (text, index) => (
             <div
+              ref={promoSquareRef}
               style={{
                 display: 'grid',
                 placeItems: 'center',
