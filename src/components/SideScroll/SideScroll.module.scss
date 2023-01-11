@@ -12,10 +12,10 @@
     pointer-events: none;
     background-image: linear-gradient(
       to right,
-      rgba(0, 0, 0, 1),
+      rgba(0, 0, 0, 0.5),
       rgba(0, 0, 0, 0),
       rgba(0, 0, 0, 0),
-      rgba(0, 0, 0, 1)
+      rgba(0, 0, 0, 0.5)
     );
     content: '';
     position: absolute;

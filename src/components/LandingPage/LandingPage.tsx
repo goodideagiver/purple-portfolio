@@ -68,24 +68,26 @@ export const LandingPage = () => {
   return (
     <div className={classes.scrollSnap}>
       {sections}
-      <SideScroll>
-        {Array.from({ length: 10 }).map((_, index) => (
-          <p
-            style={{
-              width: '500px',
-              height: '500px',
-              backgroundColor: 'red',
-              position: 'relative',
-              fontSize: '2rem',
-            }}
-            key={index}
-          >
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia
-            quibusdam placeat cumque facere, dicta excepturi, totam vero
-            recusandae beatae ipsum incidunt? Aliquam nemo error dolorem facere!
-            Iure ut tempora rem!
-          </p>
-        ))}
+      <SideScroll offset={150}>
+        {['Best dev in the world', 'React', 'SCSS', 'Next.js'].map(
+          (text, index) => (
+            <div
+              style={{
+                display: 'grid',
+                placeItems: 'center',
+                border: '4px solid white',
+                borderRadius: '0.5rem',
+                fontWeight: 'bold',
+                fontSize: '3.5rem',
+                textAlign: 'center',
+                backgroundImage: 'linear-gradient(45deg, #ff00ff, #00ffff)',
+              }}
+              key={index}
+            >
+              {text}
+            </div>
+          )
+        )}
       </SideScroll>
     </div>
   )

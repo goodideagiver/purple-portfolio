@@ -17,9 +17,10 @@ import classes from './SideScroll.module.scss'
 
 type Props = {
   children: ReactNode
+  offset?: number
 }
 
-export const SideScroll = ({ children }: Props) => {
+export const SideScroll = ({ children, offset = 0 }: Props) => {
   const scrollRef = useRef<HTMLDivElement>(null)
   const ghostRef = useRef(null)
   const stickyContainerRef = useRef<HTMLDivElement>(null)
@@ -32,7 +33,7 @@ export const SideScroll = ({ children }: Props) => {
       setScrollRange(scrollRef.current.scrollWidth)
   }, [scrollRef])
 
-  const onResize = useCallback((entries) => {
+  const onResize = useCallback((entries: ResizeObserverEntry[]) => {
     for (let entry of entries) {
       setViewportW(entry.contentRect.width)
     }
@@ -51,7 +52,7 @@ export const SideScroll = ({ children }: Props) => {
   const transform = useTransform(
     scrollYProgress,
     [0, 1],
-    [0, -scrollRange + viewportW]
+    [0 + offset, -scrollRange + viewportW - offset]
   )
   const physics = { damping: 15, mass: 0.27, stiffness: 100 }
   const spring = useSpring(transform, physics)
