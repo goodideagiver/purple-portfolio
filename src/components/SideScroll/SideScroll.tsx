@@ -7,6 +7,7 @@ import {
   useTransform,
 } from 'framer-motion'
 import { useCallback, useLayoutEffect, useRef, useState } from 'react'
+import classes from './SideScroll.module.scss'
 
 type Props = {
   children: ReactNode
@@ -17,8 +18,6 @@ export const SideScroll = ({ children }: Props) => {
   const ghostRef = useRef(null)
   const [scrollRange, setScrollRange] = useState(0)
   const [viewportW, setViewportW] = useState(0)
-
-  const scrollPerc = useMotionValue(0)
 
   useLayoutEffect(() => {
     scrollRef &&
@@ -52,12 +51,19 @@ export const SideScroll = ({ children }: Props) => {
 
   return (
     <div ref={scrollRef}>
-      <div className='scroll-container'>
-        <motion.section style={{ x: spring }} className='thumbnails-container'>
-          {children}
+      <div className={classes.scroll}>
+        <motion.section
+          style={{ x: spring }}
+          className={classes.thumbnailsContainer}
+        >
+          <div className={classes.thumbnails}>{children}</div>
         </motion.section>
       </div>
-      <div ref={ghostRef} style={{ height: scrollRange }} className='ghost' />
+      <div
+        ref={ghostRef}
+        style={{ height: scrollRange }}
+        className={classes.ghost}
+      />
     </div>
   )
 }

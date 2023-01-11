@@ -1,3 +1,4 @@
+import { SideScroll } from '../SideScroll/SideScroll'
 import classes from './LandingPage.module.scss'
 import { Section } from './Section/Section'
 import { Props as wordsForSection } from './SpacedText/SpacedText'
@@ -64,5 +65,28 @@ export const LandingPage = () => {
     (section, index) => <Section key={index} words={section} />
   )
 
-  return <div className={classes.scrollSnap}>{sections}</div>
+  return (
+    <div className={classes.scrollSnap}>
+      {sections}
+      <SideScroll>
+        {Array.from({ length: 10 }).map((_, index) => (
+          <p
+            style={{
+              width: '500px',
+              height: '500px',
+              backgroundColor: 'red',
+              position: 'relative',
+              fontSize: '2rem',
+            }}
+            key={index}
+          >
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia
+            quibusdam placeat cumque facere, dicta excepturi, totam vero
+            recusandae beatae ipsum incidunt? Aliquam nemo error dolorem facere!
+            Iure ut tempora rem!
+          </p>
+        ))}
+      </SideScroll>
+    </div>
+  )
 }

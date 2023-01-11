@@ -1,3 +1,32 @@
-.root {
-  background-color: red;
+.scroll {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  will-change: transform;
+  background-color: blue;
+}
+
+.ghost {
+  width: 100vw;
+}
+
+.thumbnailsContainer {
+  position: relative;
+  height: 100vh;
+  border: 40px yellow solid;
+  width: max-content;
+  display: flex;
+  align-items: center;
+  > * {
+    height: 40vh;
+    width: 700px;
+    border: 15px solid magenta;
+  }
+}
+
+.thumbnails {
+  position: relative;
+  display: flex;
+  border: 20px solid green;
 }

@@ -26,10 +26,6 @@ export const Section = ({ words }: Props) => {
     <div className={classes.root}>
       <motion.div
         ref={ref}
-        // initial={{ opacity: 0, scale: 0.8 }}
-        // whileInView={{ opacity: 1, scale: 1 }}
-        // transition={{ type: 'spring', stiffness: 100, duration: 10 }}
-        // viewport={{ once: false, margin: '-200px' }}
         style={{ opacity: springProgress, scale: springProgress }}
         className={wordContainerCss}
       >
