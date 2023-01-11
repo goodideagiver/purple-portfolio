@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from 'react'
 import { SideScroll } from '../SideScroll/SideScroll'
 import classes from './LandingPage.module.scss'
 import { Section } from './Section/Section'
+import { ShinySquare } from './ShinySquare/ShinySquare'
 import { Props as wordsForSection } from './SpacedText/SpacedText'
 
 const firstSection: wordsForSection[] = [
@@ -83,6 +84,9 @@ export const LandingPage = () => {
   return (
     <div className={classes.scrollSnap}>
       {sections}
+      <ShinySquare>
+        <p>siema z rana</p>
+      </ShinySquare>
       <SideScroll offset={offset}>
         {['Best dev in the world', 'React', 'SCSS', 'Next.js'].map(
           (text, index) => (
