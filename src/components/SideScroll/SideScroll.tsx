@@ -64,7 +64,7 @@ export const SideScroll = ({
   const transform = useTransform(
     scrollYProgress,
     [0, 1],
-    [0 + offset, -scrollRange + viewportW + offset]
+    [0 + offset, -scrollRange + viewportW - offset]
   )
   const physics = { damping: 15, mass: 0.27, stiffness: 100 }
   const spring = useSpring(transform, physics)

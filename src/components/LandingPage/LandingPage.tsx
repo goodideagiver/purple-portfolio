@@ -68,7 +68,7 @@ export const LandingPage = () => {
   return (
     <div className={classes.scrollSnap}>
       {sections}
-      <SideScroll>
+      <SideScroll offset={window.innerWidth / 2}>
         {['Best dev in the world', 'React', 'SCSS', 'Next.js'].map(
           (text, index) => (
             <div
