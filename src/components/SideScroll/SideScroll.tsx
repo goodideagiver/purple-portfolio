@@ -18,23 +18,36 @@ type Props = {
 export const SideScroll = ({
   children,
   offset = 0,
-  scrollDistanceMultiplier = 2,
+  scrollDistanceMultiplier = 1,
 }: Props) => {
-  const scrollRef = useRef<HTMLDivElement>(null)
+  const scrollListenerRef = useRef<HTMLDivElement>(null)
   const ghostRef = useRef(null)
+  const scrollingContentRef = useRef<HTMLDivElement>(null)
   const stickyContainerRef = useRef<HTMLDivElement>(null)
   const [scrollRange, setScrollRange] = useState(0)
   const [viewportW, setViewportW] = useState(0)
 
   const { scrollYProgress } = useScroll({
-    target: scrollRef,
+    target: scrollListenerRef,
   })
 
+  const onResizeScrollRange = useCallback((entries: ResizeObserverEntry[]) => {
+    for (let entry of entries) {
+      setScrollRange(
+        entry.contentRect.width +
+          (window.innerWidth - document.documentElement.clientWidth)
+      )
+    }
+  }, [])
+
   useEffect(() => {
-    scrollRef &&
-      scrollRef.current &&
-      setScrollRange(scrollRef.current.scrollWidth)
-  }, [scrollRef])
+    const resizeObserver = new ResizeObserver((entries) =>
+      onResizeScrollRange(entries)
+    )
+    scrollingContentRef &&
+      scrollingContentRef.current &&
+      resizeObserver.observe(scrollingContentRef.current)
+  }, [onResizeScrollRange])
 
   const onResize = useCallback((entries: ResizeObserverEntry[]) => {
     for (let entry of entries) {
@@ -51,24 +64,25 @@ export const SideScroll = ({
   const transform = useTransform(
     scrollYProgress,
     [0, 1],
-    [0 + offset, -scrollRange - viewportW * 2 + offset]
+    [0 + offset, -scrollRange + viewportW + offset]
   )
   const physics = { damping: 15, mass: 0.27, stiffness: 100 }
   const spring = useSpring(transform, physics)
 
   return (
-    <div className={classes.root} ref={scrollRef}>
+    <div className={classes.root} ref={scrollListenerRef}>
       <div ref={stickyContainerRef} className={classes.scroll}>
         <motion.section
           style={{ x: spring }}
           className={classes.thumbnailsContainer}
+          ref={scrollingContentRef}
         >
           {children}
         </motion.section>
       </div>
       <div
         ref={ghostRef}
-        style={{ height: (scrollRange + viewportW) * scrollDistanceMultiplier }}
+        style={{ height: scrollRange * scrollDistanceMultiplier }}
         className={classes.ghost}
       />
     </div>
