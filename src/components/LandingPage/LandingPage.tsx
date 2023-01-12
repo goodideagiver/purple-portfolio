@@ -70,41 +70,38 @@ export const LandingPage = () => {
   )
 
   useEffect(() => {
-    const countOfSquaresThatWillFitIntoViewport = window.innerWidth / 700
+    const countOfSquaresThatWillFitIntoViewport =
+      window.innerWidth / (promoSquareRef?.current?.offsetWidth || 0)
     const fullSquaresThatWillFit = Math.floor(
       countOfSquaresThatWillFitIntoViewport
     )
     const offsetOfSquares =
-      ((countOfSquaresThatWillFitIntoViewport - fullSquaresThatWillFit) *
-        (promoSquareRef?.current?.offsetWidth || 700)) /
-      2
+      (countOfSquaresThatWillFitIntoViewport - fullSquaresThatWillFit) *
+      (promoSquareRef?.current?.offsetWidth || 0)
     setOffset(offsetOfSquares)
   }, [])
 
   return (
     <div className={classes.scrollSnap}>
       {sections}
-      <ShinySquare>
-        <p>siema z rana</p>
-      </ShinySquare>
-      <SideScroll offset={offset}>
-        {['Best dev in the world', 'React', 'SCSS', 'Next.js'].map(
+      <h2>Projects</h2>
+      <SideScroll offset={offset} scrollDistanceMultiplier={0.7}>
+        {['My skills', 'TypeScript', 'React', 'SCSS', 'Next.js'].map(
           (text, index) => (
             <div
               ref={promoSquareRef}
               style={{
                 display: 'grid',
                 placeItems: 'center',
-                border: '4px solid white',
-                borderRadius: '0.5rem',
+                overflow: 'hidden',
+                borderRadius: '1.5rem',
                 fontWeight: 'bold',
                 fontSize: '3.5rem',
                 textAlign: 'center',
-                backgroundImage: 'linear-gradient(45deg, #ff00ff, #00ffff)',
               }}
               key={index}
             >
-              {text}
+              <ShinySquare>{text}</ShinySquare>
             </div>
           )
         )}

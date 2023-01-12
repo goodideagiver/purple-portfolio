@@ -1,8 +1,7 @@
 .root {
   display: flex;
-  justify-content: space-between;
   flex: 1 1 160px;
-  padding: 0 0 0.2em 0;
+  align-items: center;
 }
 
 .letter {
