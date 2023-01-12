@@ -1,3 +1,5 @@
+@use '/styles/lib/colors.scss' as colors;
+
 .words-container {
   &:hover,
   &:focus-within {
@@ -22,6 +24,9 @@
   transition: opacity 1s ease-out, transform 1s ease-out, color 1s,
     background-color 1s;
   background-color: white;
+  &:first-child {
+    background-color: colors.$brandPrimary;
+  }
   color: black;
   padding: 0.5rem 1rem;
 }

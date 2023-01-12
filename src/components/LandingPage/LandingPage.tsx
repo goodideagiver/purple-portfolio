@@ -65,9 +65,9 @@ const thirdSection: wordsForSection[] = [
 export const LandingPage = () => {
   const [offset, setOffset] = useState(0)
   const promoSquareRef = useRef<HTMLDivElement>(null)
-  const sections = [firstSection, secondSection, thirdSection].map(
-    (section, index) => <Section key={index} words={section} />
-  )
+  const sections = [firstSection, secondSection].map((section, index) => (
+    <Section key={index} words={section} />
+  ))
 
   useEffect(() => {
     const countOfSquaresThatWillFitIntoViewport =
@@ -84,7 +84,6 @@ export const LandingPage = () => {
   return (
     <div className={classes.scrollSnap}>
       {sections}
-      <h2>Projects</h2>
       <SideScroll offset={offset} scrollDistanceMultiplier={0.7}>
         {['My skills', 'TypeScript', 'React', 'SCSS', 'Next.js'].map(
           (text, index) => (
@@ -106,7 +105,7 @@ export const LandingPage = () => {
           )
         )}
       </SideScroll>
-      {sections}
+      <Section words={thirdSection} />
     </div>
   )
 }
