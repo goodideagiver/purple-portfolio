@@ -1,34 +1,17 @@
 import { useEffect, useState, useRef } from 'react'
 import { SideScroll } from '../SideScroll/SideScroll'
+import { SkillSquare } from '../SkillSquare/SkillSquare'
+import { FirstSection } from './FirstSection/FirstSection'
 import classes from './LandingPage.module.scss'
 import { Section } from './Section/Section'
 import { ShinySquare } from './ShinySquare/ShinySquare'
 import { Props as wordsForSection } from './SpacedText/SpacedText'
 
-const firstSection: wordsForSection[] = [
-  {
-    text: 'Karol Bartkiewicz',
-  },
-  {
-    text: 'Frontend Developer',
-  },
-  {
-    text: 'GitHub',
-    href: 'https://github.com/goodideagiver',
-    external: true,
-  },
-  {
-    text: 'TIL',
-    href: '/til',
-  },
-  {
-    text: new Date().getFullYear().toString(),
-  },
-]
-
 const secondSection: wordsForSection[] = [
   {
     text: 'Projects',
+    id: 'projects',
+    style: { scrollMargin: '25vh' },
   },
   {
     text: 'Bewebdev.tech',
@@ -45,6 +28,8 @@ const secondSection: wordsForSection[] = [
 const thirdSection: wordsForSection[] = [
   {
     text: 'Contact',
+    style: { scrollMargin: '25vh' },
+    id: 'contact',
   },
   {
     text: 'E-mail',
@@ -62,12 +47,39 @@ const thirdSection: wordsForSection[] = [
   },
 ]
 
+const skills: {
+  text: string
+  icon?: string
+  color?: string
+}[] = [
+  {
+    text: 'My skills:',
+  },
+  {
+    text: 'TypeScript',
+    icon: '/typescript.svg',
+    color: '#007ACC',
+  },
+  {
+    text: 'React',
+    icon: '/react.svg',
+    color: '#54BDDA',
+  },
+  {
+    text: 'SCSS',
+    icon: '/sass.png',
+    color: '#CC669B',
+  },
+  {
+    text: 'Next.js',
+    icon: '/next.svg',
+    color: 'gray',
+  },
+]
+
 export const LandingPage = () => {
   const [offset, setOffset] = useState(0)
   const promoSquareRef = useRef<HTMLDivElement>(null)
-  const sections = [firstSection, secondSection].map((section, index) => (
-    <Section key={index} words={section} />
-  ))
 
   useEffect(() => {
     const countOfSquaresThatWillFitIntoViewport =
@@ -83,27 +95,28 @@ export const LandingPage = () => {
 
   return (
     <div className={classes.scrollSnap}>
-      {sections}
+      <FirstSection />
       <SideScroll offset={offset} scrollDistanceMultiplier={0.7}>
-        {['My skills', 'TypeScript', 'React', 'SCSS', 'Next.js'].map(
-          (text, index) => (
-            <div
-              ref={promoSquareRef}
-              style={{
-                display: 'grid',
-                placeItems: 'center',
-                overflow: 'hidden',
-                borderRadius: '1.5rem',
-                fontWeight: 'bold',
-                fontSize: '3.5rem',
-                textAlign: 'center',
-              }}
-              key={index}
-            >
-              <ShinySquare>{text}</ShinySquare>
-            </div>
-          )
-        )}
+        {skills.map(({ text, icon, color }, index) => (
+          <div
+            ref={promoSquareRef}
+            style={{
+              display: 'grid',
+              placeItems: 'center',
+              overflow: 'hidden',
+              borderRadius: '1.5rem',
+              fontWeight: 'bold',
+              fontSize: '3.5rem',
+              textAlign: 'center',
+              border: `2px solid ${color}`,
+            }}
+            key={index}
+          >
+            <SkillSquare color={color} icon={icon}>
+              {text}
+            </SkillSquare>
+          </div>
+        ))}
       </SideScroll>
       <Section words={thirdSection} />
     </div>

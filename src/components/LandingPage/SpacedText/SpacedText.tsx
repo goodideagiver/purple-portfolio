@@ -3,15 +3,22 @@ import Link from 'next/link'
 import { useState } from 'react'
 import classes from './SpacedText.module.scss'
 import { SpacedWord } from './SpacedWord/SpacedWord'
+import { HTMLAttributes } from 'react'
 
-export type Props = {
+export interface Props extends HTMLAttributes<HTMLElement> {
   href?: string
   external?: boolean
   text: string
   visible?: boolean
 }
 
-export const SpacedText = ({ href, text, external, visible }: Props) => {
+export const SpacedText = ({
+  href,
+  text,
+  external,
+  visible,
+  ...props
+}: Props) => {
   const [isHovered, setIsHovered] = useState(false)
 
   const hoverStartHandler = () => {
@@ -41,6 +48,7 @@ export const SpacedText = ({ href, text, external, visible }: Props) => {
           className={textCss}
           onMouseEnter={hoverStartHandler}
           onMouseLeave={hoverEndHandler}
+          {...props}
         >
           {words}
         </a>
@@ -50,6 +58,7 @@ export const SpacedText = ({ href, text, external, visible }: Props) => {
       <Link
         onMouseEnter={hoverStartHandler}
         onMouseLeave={hoverEndHandler}
+        {...props}
         className={textCss}
         href={href}
       >
@@ -63,6 +72,7 @@ export const SpacedText = ({ href, text, external, visible }: Props) => {
       onMouseEnter={hoverStartHandler}
       onMouseLeave={hoverEndHandler}
       className={textCss}
+      {...props}
     >
       {words}
     </div>
