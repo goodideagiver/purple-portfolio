@@ -1,0 +1,45 @@
+.root {
+  position: absolute;
+  border-radius: 8px;
+  pointer-events: none;
+  user-select: none;
+  will-change: transform, opacity;
+  opacity: 0;
+  transition: opacity 1s;
+  &.inView {
+    opacity: 0.4;
+  }
+}
+
+@keyframes inView {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.root:nth-child(1) {
+  top: 0;
+  left: 0;
+  transform: translate(50%, 50%) rotate(17deg);
+}
+
+.root:nth-child(2) {
+  top: 0;
+  right: 0;
+  transform: translate(-100%, 50%) rotate(-22deg) scale(0.8);
+}
+
+.root:nth-child(3) {
+  bottom: 0;
+  left: 0;
+  transform: translate(70%, 20%) rotate(-18deg) scale(0.7);
+}
+
+.root:nth-child(4) {
+  bottom: 0;
+  right: 0;
+  transform: translate(-50%, -20%) rotate(17deg) scale(0.8);
+}

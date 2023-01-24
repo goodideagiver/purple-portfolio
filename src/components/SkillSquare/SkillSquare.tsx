@@ -2,6 +2,7 @@ import { ReactNode, useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import classes from './SkillSquare.module.scss'
 import { useScroll, motion, useInView, useTransform } from 'framer-motion'
+import { Icon } from './Icon/Icon'
 
 type Props = {
   children: ReactNode
@@ -37,24 +38,10 @@ export const SkillSquare = ({ children, icon, color }: Props) => {
         backgroundImage: `linear-gradient(to bottom,transparent,${color})`,
       }}
     >
-      <motion.div
-        className={classes.iconWrapper}
-        style={{
-          transform: `translateX(${opacity * 5}%)`,
-          opacity: opacity,
-        }}
-      >
+      <motion.div className={classes.iconWrapper}>
         {icon &&
           Array.from({ length: 4 }).map((_, index) => (
-            <Image
-              key={index}
-              src={icon}
-              alt=''
-              aria-hidden='true'
-              width={100}
-              height={100}
-              className={classes.icon}
-            />
+            <Icon key={index} icon={icon} />
           ))}
       </motion.div>
       <p className={classes.text}>{children}</p>
