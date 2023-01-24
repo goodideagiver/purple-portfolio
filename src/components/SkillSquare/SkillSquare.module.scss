@@ -7,6 +7,7 @@
   background-repeat: no-repeat;
   background-size: 100% 120%;
   background-position: 50% -50%;
+  box-shadow: inset rgba(0, 0, 0, 0.339) 0 -20px 50px;
 }
 
 .iconWrapper {
@@ -15,13 +16,7 @@
   height: 100%;
   left: 0;
   top: 0;
-  transition: opacity 1s, transform 1s;
-  opacity: 0;
-  transform: translate3d(0, 5px, 0);
-  &.inView {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-  }
+  transition: opacity 0.5s, transform 1.5s;
 }
 
 .text {
@@ -30,7 +25,7 @@
 
 .icon {
   position: absolute;
-  border-radius: 8px;
+  border-radius: 50%;
   pointer-events: none;
   user-select: none;
 }
