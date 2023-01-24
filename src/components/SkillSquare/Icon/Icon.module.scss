@@ -7,7 +7,7 @@
   opacity: 0;
   transition: opacity 1s, translate 1s;
   &:not(.inView) {
-    translate: 0% 50%;
+    translate: 0% 10%;
   }
   &.inView {
     opacity: 0.4;
