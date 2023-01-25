@@ -14,14 +14,26 @@ export const AboutMe = () => {
 
   const topCircle = useTransform(
     useSpring(scrollYProgress, physics),
-    [0, 1],
+    [0, 0.5],
     ['10%', '90%']
   )
 
   const bottomCircle = useTransform(
     useSpring(scrollYProgress, physics),
-    [0, 1],
+    [0, 0.5],
     ['90%', '10%']
+  )
+
+  const topCircle2 = useTransform(
+    useSpring(scrollYProgress, physics),
+    [0.5, 1],
+    ['30%', '70%']
+  )
+
+  const bottomCircle2 = useTransform(
+    useSpring(scrollYProgress, physics),
+    [0.5, 1],
+    ['70%', '30%']
   )
 
   return (
@@ -30,12 +42,14 @@ export const AboutMe = () => {
         <motion.span
           style={{
             left: topCircle,
+            top: topCircle2,
           }}
           className={classes.circle}
         />
         <motion.span
           style={{
             left: bottomCircle,
+            top: bottomCircle2,
           }}
           className={classes.circle}
         />
