@@ -8,6 +8,7 @@
   overflow: hidden;
   display: grid;
   place-items: center;
+  border-radius: 16px;
   &:hover {
     .shine {
       scale: 1;
@@ -23,6 +24,7 @@
     scale: 3;
     opacity: 0.3;
     transition: transform 1s, scale 1s 0.5s, opacity 1s 0.5s;
+    pointer-events: none;
   }
 }
 

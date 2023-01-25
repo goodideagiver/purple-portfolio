@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from 'react'
 import { SideScroll } from '../SideScroll/SideScroll'
 import { SkillSquare } from '../SkillSquare/SkillSquare'
+import { AboutMe } from './AboutMe/AboutMe'
 import { FirstSection } from './FirstSection/FirstSection'
 import classes from './LandingPage.module.scss'
 import { Section } from './Section/Section'
@@ -118,6 +119,7 @@ export const LandingPage = () => {
           </div>
         ))}
       </SideScroll>
+      <AboutMe />
       <Section words={thirdSection} />
     </div>
   )

@@ -1,4 +1,4 @@
-import { useState, ReactNode } from 'react'
+import { useState, ReactNode, useRef } from 'react'
 import classes from './ShinySquare.module.scss'
 
 import clsx from 'clsx'
@@ -7,13 +7,24 @@ import { motion, spring, useSpring } from 'framer-motion'
 
 type Props = {
   children: ReactNode
+  className?: string
 }
 
-export const ShinySquare = ({ children }: Props) => {
+export const ShinySquare = ({ children, className }: Props) => {
   const [coords, setCoords] = useState({ x: 50, y: 50 })
 
+  const childrenWrapperRef = useRef<HTMLDivElement>(null)
+
+  const resetPosition = () => {
+    setCoords({ x: 50, y: 50 })
+  }
+
   const onMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    const { clientX, clientY } = e
+    const { clientX, clientY, target } = e
+    if (target !== childrenWrapperRef.current) {
+      resetPosition()
+      return
+    }
     const { x, y } = e.currentTarget.getBoundingClientRect()
 
     const newX = clientX - x - e.currentTarget.offsetWidth / 2
@@ -22,15 +33,11 @@ export const ShinySquare = ({ children }: Props) => {
     setCoords({ x: newX, y: newY })
   }
 
-  const resetPosition = () => {
-    setCoords({ x: 50, y: 50 })
-  }
-
   return (
     <div
       onMouseLeave={resetPosition}
       onMouseMove={onMouseMove}
-      className={classes.root}
+      className={clsx(classes.root, className)}
     >
       <motion.span
         style={{
@@ -46,7 +53,9 @@ export const ShinySquare = ({ children }: Props) => {
         }}
         className={clsx(classes.shine, classes.reflection)}
       />
-      <div className={classes.content}>{children}</div>
+      <div ref={childrenWrapperRef} className={classes.content}>
+        {children}
+      </div>
     </div>
   )
 }
