@@ -1,13 +1,13 @@
 .scrollRoot {
-  height: 6000px;
+  height: 1000vw;
 }
 
 .root {
+  overflow: hidden;
   position: sticky;
   top: 0;
   height: 100vh;
-  width: 100dvh;
-  width: 100vw;
+  max-width: 100vw;
   display: grid;
   place-items: center;
 }
