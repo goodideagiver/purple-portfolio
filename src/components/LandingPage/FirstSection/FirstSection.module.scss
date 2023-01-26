@@ -15,6 +15,9 @@
 .textContainer {
   max-width: 80vw;
   position: absolute;
+  &:not(:first-child) {
+    pointer-events: none;
+  }
 }
 
 .title {

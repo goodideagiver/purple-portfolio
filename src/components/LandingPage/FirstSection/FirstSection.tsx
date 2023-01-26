@@ -29,7 +29,7 @@ const links: Link[] = [
   },
 ]
 
-const physics = { damping: 15, stiffness: 15, mass: 2 }
+const physics = { damping: 10, stiffness: 30, mass: 0.5 }
 
 export const FirstSection = () => {
   const scrollRef = useRef<HTMLDivElement>(null)
@@ -38,21 +38,25 @@ export const FirstSection = () => {
     target: scrollRef,
   })
 
-  const spring = useSpring(scrollYProgress, physics)
+  const spring = scrollYProgress
 
   const firstSectionProgress = useTransform(spring, [0, 0.1, 0.2], [1, 1, 0])
+  const fscale = useTransform(spring, [0, 0.1, 0.2], [1, 1, 4])
 
-  const xProgress = useTransform(spring, [0, 0.5], [0, 100])
-
-  const secondSectionProgress = useTransform(spring, [0.2, 0.3, 0.4], [0, 1, 0])
-  const xProgress2 = useTransform(spring, [0.2, 0.3], [-100, 0])
+  const secondSectionProgress = useTransform(spring, [0.1, 0.3, 0.4], [0, 1, 0])
+  const scaleSecond = useTransform(spring, [0.1, 0.3], [0.5, 1])
 
   const thirdSection = useTransform(spring, [0.4, 0.5, 0.6], [0, 1, 0])
+  const notSpanTilt = useTransform(
+    useSpring(scrollYProgress, { stiffness: 1000, damping: 10, mass: 0.5 }),
+    [0.45, 0.5],
+    [0, 20]
+  )
 
   const fourthSection = useTransform(spring, [0.6, 0.7, 0.8], [0, 1, 0])
   const fourthSectionScale = useTransform(spring, [0.6, 0.7, 0.8], [5, 1, 0.8])
 
-  const fifthSection = useTransform(spring, [0.8, 0.9, 0.92], [0, 1, 0])
+  const fifthSection = useTransform(spring, [0.8, 0.9, 0.92], [0, 1, 0.5])
   const fifthSectionScale = useTransform(spring, [0.8, 0.9], [1.2, 1])
   const fifthSectionY = useTransform(spring, [0.85, 0.95], [0, -100])
 
@@ -62,7 +66,7 @@ export const FirstSection = () => {
         <motion.div
           style={{
             opacity: firstSectionProgress,
-            x: xProgress,
+            scale: fscale,
           }}
           className={classes.textContainer}
         >
@@ -88,7 +92,7 @@ export const FirstSection = () => {
         <motion.div
           style={{
             opacity: secondSectionProgress,
-            x: xProgress2,
+            scale: scaleSecond,
           }}
           className={classes.textContainer}
         >
@@ -103,7 +107,18 @@ export const FirstSection = () => {
           className={classes.textContainer}
         >
           <p className={classes.subtitle}>
-            {`It's`} <span style={{ color: 'red' }}>not</span> me 💩
+            {`It's`}{' '}
+            <motion.span
+              style={{
+                color: 'red',
+                rotate: notSpanTilt,
+                display: 'inline-block',
+                transformOrigin: '0 center',
+              }}
+            >
+              not
+            </motion.span>{' '}
+            me 💩
           </p>
         </motion.div>
 
