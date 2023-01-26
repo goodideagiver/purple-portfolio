@@ -56,9 +56,8 @@ export const FirstSection = () => {
   const fourthSection = useTransform(spring, [0.6, 0.7, 0.8], [0, 1, 0])
   const fourthSectionScale = useTransform(spring, [0.6, 0.7, 0.8], [5, 1, 0.8])
 
-  const fifthSection = useTransform(spring, [0.8, 0.9, 0.92], [0, 1, 0.5])
-  const fifthSectionScale = useTransform(spring, [0.8, 0.9], [1.2, 1])
-  const fifthSectionY = useTransform(spring, [0.85, 0.95], [0, -100])
+  const fifthSection = useTransform(spring, [0.75, 0.8], [0, 1])
+  const fifthSectionScale = useTransform(spring, [0.75, 0.8], [1.2, 1])
 
   return (
     <div ref={scrollRef} className={classes.scrollRoot}>
@@ -135,13 +134,13 @@ export const FirstSection = () => {
           style={{
             opacity: fifthSection,
             scale: fifthSectionScale,
-            y: fifthSectionY,
           }}
           className={classes.textContainer}
         >
-          <p
-            className={classes.subtitle}
-          >{`I'm sure we can create something cool together!`}</p>
+          <p className={classes.subtitle}>
+            {`I'm sure we can create `}
+            something cool together!
+          </p>
         </motion.div>
       </div>
     </div>

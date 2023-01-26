@@ -17,6 +17,7 @@
   position: absolute;
   &:not(:first-child) {
     pointer-events: none;
+    text-align: center;
   }
 }
 
