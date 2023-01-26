@@ -62,6 +62,7 @@ export const FirstSection = () => {
   return (
     <div ref={scrollRef} className={classes.scrollRoot}>
       <div className={classes.root}>
+        <div className={classes.waves} />
         <motion.div
           style={{
             opacity: firstSectionProgress,
