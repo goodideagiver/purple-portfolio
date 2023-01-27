@@ -1,5 +1,4 @@
 import { MotionValue, useTransform, motion, useSpring } from 'framer-motion'
-import { useUserSelect } from '../useUserSelect'
 import { Subtitle } from './Subtitle/Subtitle'
 import { Wrapper } from './Wrapper/Wrapper'
 
@@ -15,15 +14,11 @@ export const NotMe = ({ scrollProgress }: Props) => {
     [0, 20]
   )
 
-  const userSelect = useUserSelect(opacity)
-
   return (
     <Wrapper
       opacity={opacity}
       style={{
         opacity,
-        userSelect,
-        pointerEvents: userSelect,
       }}
     >
       <Subtitle>

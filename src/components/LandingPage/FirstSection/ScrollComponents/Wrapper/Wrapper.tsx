@@ -1,7 +1,12 @@
 import classes from './Wrapper.module.scss'
-import { motion, MotionStyle, MotionValue, useMotionValue } from 'framer-motion'
+import {
+  motion,
+  MotionStyle,
+  MotionValue,
+  useMotionValue,
+  useTransform,
+} from 'framer-motion'
 import { ElementType, ReactNode, useEffect, useRef } from 'react'
-import { useUserSelect } from '../../useUserSelect'
 import clsx from 'clsx'
 
 type MotionDiv = Omit<ElementType<HTMLDivElement>, 'className'>
@@ -21,29 +26,21 @@ export const Wrapper = ({
   className,
   ...props
 }: Props) => {
-  const defaultOpacity = useMotionValue(opacity?.get() || 0)
+  const defaultOpacity = useMotionValue(0)
 
-  const ref = useRef<HTMLDivElement>(null)
-
-  const userSelect = useUserSelect(opacity || defaultOpacity)
-
-  useEffect(() => {
-    const element = ref.current
-    if (element && element.style.opacity === '0') {
-      opacity?.set(-Infinity)
-    }
-  }, [opacity])
+  const pointerEvents = useTransform(opacity || defaultOpacity, (value) =>
+    value > 0.3 ? 'auto' : 'none'
+  )
 
   const mouse = opacity
     ? {
-        userSelect,
-        pointerEvents: userSelect,
+        userSelect: pointerEvents,
+        pointerEvents: pointerEvents,
       }
     : {}
 
   return (
     <motion.div
-      ref={ref}
       className={clsx(classes.root, className)}
       {...props}
       style={{

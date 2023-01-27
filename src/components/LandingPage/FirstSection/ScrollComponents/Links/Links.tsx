@@ -1,6 +1,5 @@
 import { MotionValue, motion, useTransform } from 'framer-motion'
 import Link from 'next/link'
-import { useUserSelect } from '../../useUserSelect'
 import { Wrapper } from '../Wrapper/Wrapper'
 import classes from './Links.module.scss'
 
@@ -38,16 +37,12 @@ export const Links = ({ scrollProgress }: Props) => {
   const opacity = useTransform(scrollProgress, [0, 0.1, 0.2], [1, 1, 0])
   const scale = useTransform(scrollProgress, [0, 0.1, 0.2], [1, 1, 4])
 
-  const userSelect = useUserSelect(opacity)
-
   return (
     <Wrapper
       opacity={opacity}
       style={{
         opacity,
         scale,
-        userSelect,
-        pointerEvents: userSelect,
       }}
     >
       <h1 className={classes.title}>Karol Bartkiewicz</h1>
