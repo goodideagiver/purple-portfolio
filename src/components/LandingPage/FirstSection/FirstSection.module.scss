@@ -76,7 +76,7 @@
   font-size: 5rem;
 }
 
-@media (max-width: 1050px) {
+@media (max-width: 1180px) {
   .title {
     font-size: 5rem;
     line-height: 0.8;
@@ -86,7 +86,17 @@
   }
 }
 
-@media (max-width: 450px) {
+@media (max-width: 880px) {
+  .title {
+    font-size: 4rem;
+    line-height: 0.8;
+  }
+  .subtitle {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 660px) {
   .title {
     font-size: 2.5rem;
     line-height: 1;
@@ -98,11 +108,11 @@
 
 @media (max-width: 380px) {
   .title {
-    font-size: 2.5rem;
+    font-size: 2rem;
     line-height: 1;
   }
   .subtitle {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
 }
 
