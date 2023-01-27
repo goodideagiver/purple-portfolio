@@ -1,3 +1,5 @@
+@use '/styles/lib/colors.scss' as colors;
+
 .scrollRoot {
   height: 1000vw;
 }
@@ -15,7 +17,7 @@
 .textContainer {
   max-width: 80vw;
   position: absolute;
-  &:not(:first-child) {
+  &:not(:nth-child(3)) {
     pointer-events: none;
     text-align: center;
   }
@@ -52,6 +54,21 @@
   font-size: 7rem;
   margin: 0;
   line-height: 0.7;
+}
+
+.progress {
+  background-color: white;
+  height: 10px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  transform-origin: 0%;
+}
+
+.cool {
+  color: colors.$brandPrimary;
+  text-shadow: 0 0 0 15 white;
 }
 
 .subtitle {

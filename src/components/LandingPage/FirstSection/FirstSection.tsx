@@ -59,10 +59,41 @@ export const FirstSection = () => {
   const fifthSection = useTransform(spring, [0.75, 0.8], [0, 1])
   const fifthSectionScale = useTransform(spring, [0.75, 0.8], [1.2, 1])
 
+  const weCanTransform = {
+    weCan: useTransform(spring, [0.78, 0.8], [0, 1]),
+    create: useTransform(spring, [0.8, 0.82], [0, 1]),
+    something: useTransform(spring, [0.82, 0.84], [0, 1]),
+  }
+
+  const smthCoolBg = useTransform(spring, [0.8, 0.85], [0, 1])
+  const smthCoolBgPos = useTransform(spring, [0.8, 1], ['0%', '-20%'])
+
+  const progress = useTransform(
+    useSpring(scrollYProgress, {
+      stiffness: 100,
+      damping: 30,
+      restDelta: 0.001,
+    }),
+    [0, 0.97],
+    [0, 1]
+  )
+
   return (
     <div ref={scrollRef} className={classes.scrollRoot}>
       <div className={classes.root}>
-        <div className={classes.waves} />
+        <motion.div
+          style={{
+            opacity: smthCoolBg,
+            backgroundPositionY: smthCoolBgPos,
+          }}
+          className={classes.waves}
+        />
+        <motion.div
+          style={{
+            scaleX: progress,
+          }}
+          className={classes.progress}
+        />
         <motion.div
           style={{
             opacity: firstSectionProgress,
@@ -139,8 +170,29 @@ export const FirstSection = () => {
           className={classes.textContainer}
         >
           <p className={classes.subtitle}>
-            {`I'm sure we can create `}
-            something cool together!
+            {`I'm sure`}{' '}
+            <motion.span
+              style={{
+                opacity: weCanTransform.weCan,
+              }}
+            >
+              we can create
+            </motion.span>{' '}
+            <motion.span
+              className={classes.cool}
+              style={{
+                opacity: weCanTransform.create,
+              }}
+            >
+              something cool
+            </motion.span>{' '}
+            <motion.span
+              style={{
+                opacity: weCanTransform.something,
+              }}
+            >
+              together!
+            </motion.span>
           </p>
         </motion.div>
       </div>
