@@ -1,4 +1,5 @@
 import { MotionValue, useTransform } from 'framer-motion'
+import { BestDevBg } from '../BestDevBg/BestDevBg'
 import { Subtitle } from '../Subtitle/Subtitle'
 import { Wrapper } from '../Wrapper/Wrapper'
 import classes from './AreYouLooking.module.scss'
@@ -12,14 +13,17 @@ export const AreYouLooking = ({ scrollProgress }: Props) => {
   const scale = useTransform(scrollProgress, [0.1, 0.3], [0.5, 1])
 
   return (
-    <Wrapper
-      opacity={opacity}
-      style={{
-        opacity,
-        scale,
-      }}
-    >
-      <Subtitle>Are you looking for the best developer ever?</Subtitle>
-    </Wrapper>
+    <>
+      <BestDevBg scrollProgress={scrollProgress} />
+      <Wrapper
+        opacity={opacity}
+        style={{
+          opacity,
+          scale,
+        }}
+      >
+        <Subtitle>Are you looking for the best developer ever?</Subtitle>
+      </Wrapper>
+    </>
   )
 }
