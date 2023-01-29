@@ -4,6 +4,7 @@ import { SideScroll } from '../SideScroll/SideScroll'
 import { SkillSquare } from '../SkillSquare/SkillSquare'
 import { AboutMe } from './AboutMe/AboutMe'
 import { FirstSection } from './FirstSection/FirstSection'
+import { GithubPromo } from './GithubPromo/GithubPromo'
 import classes from './LandingPage.module.scss'
 import { Section } from './Section/Section'
 import { ShinySquare } from './ShinySquare/ShinySquare'
@@ -129,6 +130,7 @@ export const LandingPage = () => {
           ))}
         </SideScroll>
         <AboutMe />
+        <GithubPromo />
         <Section words={thirdSection} />
       </div>
     </>
