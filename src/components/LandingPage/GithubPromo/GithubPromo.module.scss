@@ -4,7 +4,7 @@
   max-width: min(95vw, 1000px);
   margin: 0 auto;
   gap: 2rem;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .projects {
@@ -17,8 +17,10 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  height: 50vh;
+  height: 50%;
   justify-content: space-between;
+  list-style: none;
+  width: 100%;
 }
 
 .header {

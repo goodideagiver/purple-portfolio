@@ -1,0 +1,11 @@
+.root {
+  border: 4px green solid;
+  padding: 2rem;
+  border-radius: 1rem;
+  transition: opacity 0.3s;
+  opacity: 0.5;
+  &.visible {
+    opacity: 1;
+  }
+  max-width: 800px;
+}
