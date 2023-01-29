@@ -1,0 +1,6 @@
+@use '/styles/lib/colors.scss' as colors;
+
+.cool {
+  color: colors.$brandPrimary;
+  text-shadow: 0 0 0 15 white;
+}

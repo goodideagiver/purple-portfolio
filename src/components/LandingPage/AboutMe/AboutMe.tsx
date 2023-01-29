@@ -12,25 +12,25 @@ export const AboutMe = () => {
     target: scrollContainer,
   })
 
-  const topCircle = useTransform(
+  const topCircleLeft = useTransform(
     useSpring(scrollYProgress, physics),
     [0, 0.5],
     ['10%', '90%']
   )
 
-  const bottomCircle = useTransform(
+  const bottomCircleLeft = useTransform(
     useSpring(scrollYProgress, physics),
     [0, 0.5],
     ['90%', '10%']
   )
 
-  const topCircle2 = useTransform(
+  const topCircleTop = useTransform(
     useSpring(scrollYProgress, physics),
     [0.5, 1],
     ['30%', '70%']
   )
 
-  const bottomCircle2 = useTransform(
+  const bottomCircleTop = useTransform(
     useSpring(scrollYProgress, physics),
     [0.5, 1],
     ['70%', '30%']
@@ -41,18 +41,19 @@ export const AboutMe = () => {
       <div className={classes.root}>
         <motion.span
           style={{
-            left: topCircle,
-            top: topCircle2,
+            left: topCircleLeft,
+            top: topCircleTop,
           }}
           className={classes.circle}
         />
         <motion.span
           style={{
-            left: bottomCircle,
-            top: bottomCircle2,
+            left: bottomCircleLeft,
+            top: bottomCircleTop,
           }}
           className={classes.circle}
         />
+        <div className={classes.circleWrapper}></div>
         <div className={classes.square}>
           <Avatar />
           <div>

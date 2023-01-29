@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from 'react'
+import { HeadSeo } from '../HeadSeo/HeadSeo'
 import { SideScroll } from '../SideScroll/SideScroll'
 import { SkillSquare } from '../SkillSquare/SkillSquare'
 import { AboutMe } from './AboutMe/AboutMe'
@@ -95,32 +96,41 @@ export const LandingPage = () => {
   }, [])
 
   return (
-    <div className={classes.scrollSnap}>
-      <FirstSection />
-      <SideScroll offset={offset} scrollDistanceMultiplier={0.7}>
-        {skills.map(({ text, icon, color }, index) => (
-          <div
-            ref={promoSquareRef}
-            style={{
-              display: 'grid',
-              placeItems: 'center',
-              overflow: 'hidden',
-              borderRadius: '1.5rem',
-              fontWeight: 'bold',
-              fontSize: '3.5rem',
-              textAlign: 'center',
-              border: `2px solid ${color}`,
-            }}
-            key={index}
-          >
-            <SkillSquare color={color} icon={icon}>
-              {text}
-            </SkillSquare>
-          </div>
-        ))}
-      </SideScroll>
-      <AboutMe />
-      <Section words={thirdSection} />
-    </div>
+    <>
+      <HeadSeo
+        meta={{
+          description:
+            'Frontend Developer - Karol Bartkiewicz, Learn more about me',
+          title: 'Portfolio',
+        }}
+      />
+      <div className={classes.scrollSnap}>
+        <FirstSection />
+        <SideScroll offset={offset} scrollDistanceMultiplier={0.7}>
+          {skills.map(({ text, icon, color }, index) => (
+            <div
+              ref={promoSquareRef}
+              style={{
+                display: 'grid',
+                placeItems: 'center',
+                overflow: 'hidden',
+                borderRadius: '1.5rem',
+                fontWeight: 'bold',
+                fontSize: '3.5rem',
+                textAlign: 'center',
+                border: `2px solid ${color}`,
+              }}
+              key={index}
+            >
+              <SkillSquare color={color} icon={icon}>
+                {text}
+              </SkillSquare>
+            </div>
+          ))}
+        </SideScroll>
+        <AboutMe />
+        <Section words={thirdSection} />
+      </div>
+    </>
   )
 }

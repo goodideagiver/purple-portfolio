@@ -1,55 +1,29 @@
 import classes from './FirstSection.module.scss'
-import Link from 'next/link'
-
-type Link = {
-  text: string
-  href: string
-  asLink?: boolean
-}
-
-const links: Link[] = [
-  {
-    text: 'TIL',
-    href: '/til',
-    asLink: true,
-  },
-  {
-    text: 'GitHub',
-    href: 'https://github.com/goodideagiver',
-  },
-  {
-    text: 'Projects',
-    href: '#projects',
-  },
-  {
-    text: 'Contact',
-    href: '#contact',
-  },
-]
+import { useRef } from 'react'
+import { useScroll } from 'framer-motion'
+import { Links } from './ScrollComponents/Links/Links'
+import { AreYouLooking } from './ScrollComponents/AreYouLooking/AreYouLooking'
+import { NotMe } from './ScrollComponents/NotMe'
+import { However } from './ScrollComponents/However'
+import { Sure } from './ScrollComponents/Sure'
+import { Waves } from './ScrollComponents/Waves/Waves'
+import { Progress } from './ScrollComponents/Progress/Progress'
 
 export const FirstSection = () => {
-  return (
-    <div className={classes.root}>
-      <div className={classes.textContainer}>
-        <h1 className={classes.title}>Karol Bartkiewicz</h1>
-        <h2 className={classes.subtitle}>Frontend Developer</h2>
-        <div className={classes.linkContainer}>
-          {links.map(({ text, href, asLink }) => {
-            if (asLink) {
-              return (
-                <Link href={href} key={text} className={classes.link}>
-                  {text}
-                </Link>
-              )
-            }
+  const scrollRef = useRef<HTMLDivElement>(null)
 
-            return (
-              <a href={href} key={text} className={classes.link}>
-                {text}
-              </a>
-            )
-          })}
-        </div>
+  const { scrollYProgress: scrollProgress } = useScroll({
+    target: scrollRef,
+  })
+
+  return (
+    <div ref={scrollRef} className={classes.scrollRoot}>
+      <div className={classes.root}>
+        {[Waves, Progress, Links, AreYouLooking, NotMe, However, Sure].map(
+          (Component, index) => (
+            <Component key={'siema' + index} scrollProgress={scrollProgress} />
+          )
+        )}
       </div>
     </div>
   )
