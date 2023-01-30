@@ -1,5 +1,4 @@
 .root {
-  border: 4px green solid;
   padding: 2rem;
   border-radius: 1rem;
   transition: opacity 0.3s;
@@ -9,12 +8,18 @@
     opacity: 1;
   }
   max-width: 800px;
-  aspect-ratio: 1/1;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 1rem;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+  background-color: black;
+  h3,
+  p,
+  a {
+    position: relative;
+  }
 }
 
 .image {

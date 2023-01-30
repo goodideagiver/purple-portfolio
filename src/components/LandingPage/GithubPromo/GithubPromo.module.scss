@@ -1,10 +1,18 @@
 .root {
   height: 250vh;
   display: flex;
-  max-width: min(95vw, 1000px);
+  flex-wrap: wrap;
   margin: 0 auto;
   gap: 2rem;
   justify-content: center;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0),
+    rgba(68, 9, 204, 0.1),
+    rgba(74, 19, 19, 0.5),
+    rgba(0, 0, 0, 0)
+  );
+  padding: 0 1rem;
 }
 
 .projects {
@@ -18,7 +26,7 @@
   flex-direction: column;
   gap: 2rem;
   height: 50%;
-  justify-content: space-between;
+  justify-content: center;
   list-style: none;
   width: 100%;
 }
@@ -31,10 +39,6 @@
   margin-bottom: 1rem;
 }
 
-.circle {
-  background-color: green;
-}
-
 .sticky {
   position: sticky;
   top: 0;
@@ -42,6 +46,11 @@
   height: 100dvh;
   display: grid;
   place-items: center;
+}
+
+.projects,
+.sticky {
+  flex: 1 1 150px;
 }
 
 .link {
