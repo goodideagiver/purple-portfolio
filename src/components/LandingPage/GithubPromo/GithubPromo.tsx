@@ -12,7 +12,8 @@ import {
 const portfolioItems: PortfolioItemType[] = [
   {
     title: 'Bewebdev.tech',
-    description: 'A website for web developers',
+    description: `bewebdev.tech is a project that offers a collection of useful learning resources for web developers. It's built using the Astro framework, the React JavaScript library, and SCSS for styling. The website provides a centralized location for web developers to find information, tutorials, and other resources to improve their skills. The focus is on delivering high-quality content in a user-friendly interface to make it easy for developers to find what they're looking for and get started with learning.
+`,
     image: '/bewebdev.tech_.png',
     link: 'https://bewebdev.tech',
   },
@@ -30,7 +31,7 @@ const portfolioItems: PortfolioItemType[] = [
   },
 ]
 
-const commitSquareCount = 12 * 7
+const commitSquareCount = 9 * 10
 
 export const GithubPromo = () => {
   const ref = useRef<HTMLDivElement>(null)
@@ -39,8 +40,6 @@ export const GithubPromo = () => {
     target: ref,
   })
 
-  const shine = useTransform(scrollYProgress, [0, 1], ['150%', '0%'])
-
   return (
     <div ref={ref} className={classes.root}>
       <div className={classes.sticky}>
@@ -48,17 +47,6 @@ export const GithubPromo = () => {
           <a className={classes.link} href='https://github.com/goodideagiver'>
             <div className={classes.header}>
               <h2 className={classes.title}>Visit my GitHub</h2>
-              <svg id='progress' width='75' height='75' viewBox='0 0 100 100'>
-                <circle cx='50' cy='50' r='30' pathLength='1' className='bg' />
-                <motion.circle
-                  cx='50'
-                  cy='50'
-                  r='30'
-                  pathLength='1'
-                  className='indicator'
-                  style={{ pathLength: scrollYProgress }}
-                />
-              </svg>
             </div>
             <div className={classes.grid}>
               {Array.from({ length: commitSquareCount }).map((_, index) => {
