@@ -24,15 +24,16 @@
 }
 
 .square {
+  padding: 1rem;
   display: grid;
   place-items: center;
   position: relative;
-  width: 100%;
+  width: min(1000px, 98%);
   height: 90%;
-  background-color: rgba(5, 5, 5, 0.8);
+  background-color: rgba(5, 5, 5, 0.5);
   backdrop-filter: blur(150px) saturate(200%) brightness(150%);
-  border: rgb(12, 12, 12) 4px solid;
-
+  border: transparentize(colors.$brandPrimary, 0.8) 4px solid;
+  background-blend-mode: luminosity;
   border-radius: 1rem;
 }
 
