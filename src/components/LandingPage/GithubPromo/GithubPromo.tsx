@@ -2,34 +2,8 @@ import { useScroll, motion, useTransform } from 'framer-motion'
 import { useRef } from 'react'
 import { CommitSquare } from './CommitSquare/CommitSquare'
 import classes from './GithubPromo.module.scss'
-import {
-  PortfolioItem,
-  Props as PortfolioItemType,
-} from './PortfolioItem/PortfolioItem'
-
-// 53 X 7 - commit graph size
-
-const portfolioItems: PortfolioItemType[] = [
-  {
-    title: 'Bewebdev.tech',
-    description: `bewebdev.tech is a project that offers a collection of useful learning resources for web developers. It's built using the Astro framework, the React JavaScript library, and SCSS for styling. The website provides a centralized location for web developers to find information, tutorials, and other resources to improve their skills. The focus is on delivering high-quality content in a user-friendly interface to make it easy for developers to find what they're looking for and get started with learning.
-`,
-    image: '/bewebdev.tech_.png',
-    link: 'https://bewebdev.tech',
-  },
-  {
-    title: 'How to ask good questions',
-    description: `lorem ipsum`,
-    image: '/example.jpg',
-    link: 'https://goodideagiver.github.io/how-to-ask-good-questions/',
-  },
-  {
-    title: 'How to ask good questions',
-    description: 'A website for web developers',
-    image: '/example.jpg',
-    link: 'https://goodideagiver.github.io/how-to-ask-good-questions/',
-  },
-]
+import { PortfolioItem } from './PortfolioItem/PortfolioItem'
+import { portfolioItems } from './portfolioItems'
 
 const commitSquareCount = 9 * 10
 
