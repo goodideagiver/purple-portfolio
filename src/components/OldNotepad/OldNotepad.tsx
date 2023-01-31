@@ -1,6 +1,7 @@
 import Image from 'next/image'
-import { ReactNode } from 'react'
+import { ReactNode, useState } from 'react'
 import classes from './OldNotepad.module.scss'
+import { motion } from 'framer-motion'
 
 type Props = {
   children: ReactNode
@@ -8,8 +9,44 @@ type Props = {
 }
 
 export const OldNotepad = ({ children, title }: Props) => {
+  const [maximized, setMaximized] = useState(false)
+  const [minimized, setMinimized] = useState(false)
+  const [closed, setClosed] = useState(false)
+
+  const maximizeClickHandler = () => {
+    if (minimized) {
+      setMinimized(false)
+    }
+    setMaximized((s) => !s)
+  }
+
+  const minimizeClickHandler = () => {
+    if (maximized) {
+      setMaximized(false)
+    }
+    setMinimized((s) => !s)
+  }
+
+  const closeClickHandler = () => {
+    setMaximized(false)
+    setMinimized(false)
+    setClosed(true)
+  }
+
   return (
-    <div className={classes.root}>
+    <motion.div
+      className={classes.root}
+      layout
+      data-isOpen={maximized}
+      data-isMinimized={minimized}
+      data-isClosed={closed}
+    >
+      <button onClick={() => setClosed(false)} className={classes.launch}>
+        <div>
+          <Image src='/purple.png' width={50} height={50} alt='' />
+          <p>{title}.exe</p>
+        </div>
+      </button>
       <div className={classes.title}>
         <div className={classes.name}>
           <Image
@@ -22,13 +59,13 @@ export const OldNotepad = ({ children, title }: Props) => {
           <h3>{title} - Project</h3>
         </div>
         <div className={classes.buttons}>
-          <button className={classes.minimize} />
-          <button className={classes.maximize} />
-          <button className={classes.close} />
+          <button onClick={minimizeClickHandler} className={classes.minimize} />
+          <button onClick={maximizeClickHandler} className={classes.maximize} />
+          <button onClick={closeClickHandler} className={classes.close} />
         </div>
       </div>
       <div className={classes.toolbar}>File Edit Format Help</div>
       <div className={classes.content}>{children}</div>
-    </div>
+    </motion.div>
   )
 }
