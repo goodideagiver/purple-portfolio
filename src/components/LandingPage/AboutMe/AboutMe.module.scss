@@ -4,6 +4,13 @@
   height: 3000px;
 }
 
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
 .root {
   position: sticky;
   top: 0;
@@ -19,8 +26,38 @@
   text-align: justify;
   max-width: 600px;
 
-  font-size: 2rem;
-  font-weight: bold;
+  font-size: 1.5rem;
+
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  .link {
+    text-decoration: underline;
+  }
+}
+
+.links {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-top: 3rem;
+  justify-content: center;
+
+  .externalLink {
+    text-decoration: none;
+    color: white;
+    border: 2px white solid;
+    padding: 0.5rem 1.5rem;
+    display: block;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 2rem;
+    transition: 0.3s background-color;
+    &:hover {
+      background-color: white;
+      color: black;
+    }
+  }
 }
 
 .square {
