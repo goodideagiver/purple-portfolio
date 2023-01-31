@@ -4,6 +4,7 @@ import { CommitSquare } from './CommitSquare/CommitSquare'
 import classes from './GithubPromo.module.scss'
 import { PortfolioItem } from './PortfolioItem/PortfolioItem'
 import { portfolioItems } from './portfolioItems'
+import { useScreen } from 'usehooks-ts'
 
 const commitSquareCount = 9 * 10
 
@@ -13,6 +14,10 @@ export const GithubPromo = () => {
   const { scrollYProgress } = useScroll({
     target: ref,
   })
+
+  const screen = useScreen()
+
+  const isMobile = screen && screen?.width < 768
 
   const scale = useSpring(useTransform(scrollYProgress, [0, 0.2], [0, 1]))
 
@@ -31,13 +36,14 @@ export const GithubPromo = () => {
             <div className={classes.grid}>
               {Array.from({ length: commitSquareCount }).map((_, index) => {
                 const startRange = index / commitSquareCount
+
                 const endRange = (index + 1) / commitSquareCount
 
                 return (
                   <CommitSquare
                     key={index}
                     progress={scrollYProgress}
-                    inputRange={[startRange, endRange]}
+                    inputRange={[startRange * 0.5, endRange * 0.5]}
                   />
                 )
               })}
