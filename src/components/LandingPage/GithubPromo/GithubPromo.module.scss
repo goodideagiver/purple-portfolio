@@ -46,6 +46,9 @@
   height: 100dvh;
   display: grid;
   place-items: center;
+  @media (max-width: 780px) {
+    place-items: start;
+  }
 }
 
 .projects {

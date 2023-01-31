@@ -2,6 +2,7 @@ import Image from 'next/image'
 import { ReactNode, useState } from 'react'
 import classes from './OldNotepad.module.scss'
 import { motion } from 'framer-motion'
+import { useLockedBody } from 'usehooks-ts'
 
 type Props = {
   children: ReactNode
@@ -12,22 +13,33 @@ export const OldNotepad = ({ children, title }: Props) => {
   const [maximized, setMaximized] = useState(false)
   const [minimized, setMinimized] = useState(false)
   const [closed, setClosed] = useState(false)
+  const [locked, setLocked] = useLockedBody(false, '__next')
 
   const maximizeClickHandler = () => {
     if (minimized) {
       setMinimized(false)
+      setLocked(false)
     }
-    setMaximized((s) => !s)
+    setMaximized((s) => {
+      if (s) {
+        setLocked(false)
+      } else {
+        setLocked(true)
+      }
+      return !s
+    })
   }
 
   const minimizeClickHandler = () => {
     if (maximized) {
       setMaximized(false)
+      setLocked(true)
     }
     setMinimized((s) => !s)
   }
 
   const closeClickHandler = () => {
+    setLocked(false)
     setMaximized(false)
     setMinimized(false)
     setClosed(true)
