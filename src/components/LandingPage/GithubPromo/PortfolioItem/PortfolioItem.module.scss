@@ -1,5 +1,5 @@
 .root {
-  padding: 2rem;
+  padding: 0.3rem;
   transition: opacity 0.3s;
   opacity: 0.5;
   position: relative;
@@ -7,7 +7,6 @@
   &.visible {
     opacity: 1;
   }
-  max-width: 800px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
