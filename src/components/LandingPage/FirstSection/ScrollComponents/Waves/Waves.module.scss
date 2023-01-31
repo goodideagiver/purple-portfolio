@@ -4,24 +4,8 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(
-      circle at 100% 50%,
-      transparent 20%,
-      #121212 21%,
-      #121212 34%,
-      transparent 35%,
-      transparent
-    ),
-    radial-gradient(
-        circle at 0% 50%,
-        transparent 20%,
-        #121212 21%,
-        #121212 34%,
-        transparent 35%,
-        transparent
-      )
-      0 -50px;
+  background: url('/sunglasses.webp') center center fixed;
   background-color: transparent;
-  background-size: 75px 100px;
+  background-size: 5%;
   max-width: 100vw;
 }
