@@ -1,4 +1,4 @@
-import { useScroll, motion, useTransform } from 'framer-motion'
+import { useScroll, motion, useTransform, useSpring } from 'framer-motion'
 import { useRef } from 'react'
 import { CommitSquare } from './CommitSquare/CommitSquare'
 import classes from './GithubPromo.module.scss'
@@ -14,11 +14,17 @@ export const GithubPromo = () => {
     target: ref,
   })
 
+  const scale = useSpring(useTransform(scrollYProgress, [0, 0.2], [0, 1]))
+
   return (
     <div id='projects' ref={ref} className={classes.root}>
       <div className={classes.sticky}>
         <div>
-          <a className={classes.link} href='https://github.com/goodideagiver'>
+          <motion.a
+            style={{ scale }}
+            className={classes.link}
+            href='https://github.com/goodideagiver'
+          >
             <div className={classes.header}>
               <h2 className={classes.title}>Visit my GitHub</h2>
             </div>
@@ -36,7 +42,7 @@ export const GithubPromo = () => {
                 )
               })}
             </div>
-          </a>
+          </motion.a>
         </div>
       </div>
       <div className={classes.projects}>
