@@ -4,7 +4,7 @@ import { Props as PortfolioItemType } from './PortfolioItem/PortfolioItem'
 export const portfolioItems: PortfolioItemType[] = [
   {
     title: 'Bewebdev.tech',
-    description: `bewebdev.tech is a project that offers a collection of useful learning resources for web developers. It's built using the Astro framework, the React JavaScript library, and SCSS for styling. The website provides a centralized location for web developers to find information, tutorials, and other resources to improve their skills. The focus is on delivering high-quality content in a user-friendly interface to make it easy for developers to find what they're looking for and get started with learning.
+    description: `Bewebdev.tech is a project that offers a collection of useful learning resources for web developers. It's built using the Astro framework, the React JavaScript library, and SCSS for styling. The website provides a centralized location for web developers to find information, tutorials, and other resources to improve their skills. The focus is on delivering high-quality content in a user-friendly interface to make it easy for developers to find what they're looking for and get started with learning.
 `,
     image: '/bewebdev.tech_.png',
     link: 'https://bewebdev.tech',

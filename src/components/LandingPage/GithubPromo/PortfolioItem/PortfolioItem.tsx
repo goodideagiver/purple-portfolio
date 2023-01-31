@@ -3,12 +3,11 @@ import {
   MotionValue,
   useInView,
   useScroll,
-  useTransform,
-  motion,
   useSpring,
+  useTransform,
 } from 'framer-motion'
-import Image from 'next/image'
 import { useRef } from 'react'
+import { OldNotepad } from '../../../OldNotepad/OldNotepad'
 import classes from './PortfolioItem.module.scss'
 
 export type Props = {
@@ -40,15 +39,13 @@ export const PortfolioItem = ({ description, image, link, title }: Props) => {
   })
 
   return (
-    <li ref={ref} className={clsx(classes.root, inView && classes.visible)}>
-      <motion.div className={classes.image} style={{ y }}>
-        <Image width={800} height={800} src={image} alt={title} />
-      </motion.div>
-      <h3>{title}</h3>
-      <p>{description}</p>
-      <a className={classes.link} href={link}>
-        See more
-      </a>
-    </li>
+    <OldNotepad title={title}>
+      <li ref={ref} className={clsx(classes.root, inView && classes.visible)}>
+        <p>{description}</p>
+        <a className={classes.link} href={link}>
+          See more
+        </a>
+      </li>
+    </OldNotepad>
   )
 }

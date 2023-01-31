@@ -1,0 +1,113 @@
+.root {
+  background-color: #0156e5;
+  border-radius: 4px;
+  padding: 2px 4px 6px 4px;
+  box-shadow: inset 1px 3px 5px rgba(255, 255, 255, 0.4),
+    inset rgba(0, 0, 0, 0.6) 0 -2px 5px;
+}
+
+.title {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px;
+  align-items: center;
+  gap: 8px;
+}
+
+.name {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding-top: 4px;
+  white-space: nowrap;
+  h3 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: normal;
+  }
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.toolbar {
+  font-size: 14px;
+  font-weight: 200;
+  font-family: monospace;
+  padding: 4px;
+  padding-bottom: 6px;
+  padding-left: 6px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+  background-color: #ece9d8;
+  color: black;
+  position: relative;
+  border-radius: 2px 2px 0 0;
+}
+
+.minimize,
+.maximize,
+.close {
+  width: 20px;
+  height: 20px;
+  border-radius: 2px;
+  background-color: #2767ea;
+  margin: 0 2px;
+  cursor: pointer;
+  border: white 1px solid;
+  position: relative;
+  box-shadow: inset 1px 3px 5px rgba(255, 255, 255, 0.4),
+    inset rgba(0, 0, 0, 0.6) 0 -2px 5px;
+}
+
+.minimize {
+  &::after {
+    content: '';
+    position: absolute;
+    top: 75%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    height: 3px;
+    background-color: white;
+  }
+}
+
+.maximize {
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    height: 50%;
+    border: 1px solid white;
+    border-top: 3px solid white;
+  }
+}
+
+.close {
+  background-color: #dc5a26;
+  &::after,
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    width: 80%;
+    height: 2px;
+    background-color: white;
+  }
+  &::before {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+}
+
+.content {
+  background-color: #ffffff;
+  overflow-y: scroll;
+  padding: 8px;
+}

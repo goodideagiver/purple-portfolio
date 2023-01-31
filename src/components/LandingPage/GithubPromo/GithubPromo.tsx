@@ -15,7 +15,7 @@ export const GithubPromo = () => {
   })
 
   return (
-    <div ref={ref} className={classes.root}>
+    <div id='projects' ref={ref} className={classes.root}>
       <div className={classes.sticky}>
         <div>
           <a className={classes.link} href='https://github.com/goodideagiver'>
