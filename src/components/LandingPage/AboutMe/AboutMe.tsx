@@ -58,7 +58,7 @@ export const AboutMe = () => {
           <Avatar />
           <div>
             <h2 className={classes.title}>About me</h2>
-            <p className={classes.text}>
+            <div className={classes.text}>
               <div>Hello, my name is Karol.</div>{' '}
               <div>
                 {`So far I've been coding almost every day for many months already
@@ -76,7 +76,7 @@ export const AboutMe = () => {
                 </a>{' '}
                 as a Frontend Web Developer.
               </div>
-            </p>
+            </div>
             <div className={classes.links}>
               <a
                 className={classes.externalLink}

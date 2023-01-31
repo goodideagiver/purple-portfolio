@@ -7,7 +7,7 @@
   padding: 2px 4px 6px 4px;
   box-shadow: inset 1px 3px 5px rgba(255, 255, 255, 0.4),
     inset rgba(0, 0, 0, 0.6) 0 -2px 5px;
-  &[data-isOpen='true'] {
+  &[data-isopen='true'] {
     z-index: 2137;
     position: fixed;
     top: 0;
@@ -20,14 +20,14 @@
     }
   }
 
-  &[data-isMinimized='true'] {
+  &[data-isminimized='true'] {
     .content,
     .toolbar {
       display: none;
     }
   }
 
-  &[data-isClosed='true'] {
+  &[data-isclosed='true'] {
     width: fit-content;
     > * {
       display: none;

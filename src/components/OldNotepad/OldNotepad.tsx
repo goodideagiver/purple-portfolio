@@ -37,9 +37,9 @@ export const OldNotepad = ({ children, title }: Props) => {
     <motion.div
       className={classes.root}
       layout
-      data-isOpen={maximized}
-      data-isMinimized={minimized}
-      data-isClosed={closed}
+      data-isopen={maximized}
+      data-isminimized={minimized}
+      data-isclosed={closed}
     >
       <button onClick={() => setClosed(false)} className={classes.launch}>
         <div>
