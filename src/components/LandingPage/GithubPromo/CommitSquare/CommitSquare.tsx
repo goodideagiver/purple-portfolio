@@ -17,6 +17,6 @@ export const CommitSquare = ({ progress, inputRange = [0, 1] }: Props) => {
         y,
       }}
       className={classes.root}
-    ></motion.div>
+    />
   )
 }

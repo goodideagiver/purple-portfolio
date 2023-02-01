@@ -52,6 +52,10 @@ export const OldNotepad = ({ children, title }: Props) => {
       data-isopen={maximized}
       data-isminimized={minimized}
       data-isclosed={closed}
+      transition={{
+        duration: maximized ? 0.4 : 0.2,
+        ease: maximized ? [0, 0.71, 0.2, 1.01] : 'easeOut',
+      }}
     >
       <button onClick={() => setClosed(false)} className={classes.launch}>
         <div>

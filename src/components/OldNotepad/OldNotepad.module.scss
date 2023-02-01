@@ -30,7 +30,7 @@
   }
 
   &[data-isclosed='true'] {
-    width: fit-content;
+    align-items: center;
     > * {
       display: none;
     }
