@@ -83,8 +83,8 @@
   place-items: center;
   position: relative;
   width: min(1000px, 98%);
-  height: auto;
-  max-height: 90%;
+  height: 100%;
+  max-height: 80%;
   background-color: rgba(5, 5, 5, 0.5);
   backdrop-filter: blur(150px) saturate(200%) brightness(150%);
   border: transparentize(colors.$brandPrimary, 0.8) 4px solid;
