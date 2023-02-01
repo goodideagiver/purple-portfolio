@@ -7,13 +7,13 @@ type Props = {
 }
 
 export const CommitSquare = ({ progress, inputRange = [0, 1] }: Props) => {
-  const scale = useSpring(useTransform(progress, inputRange, [0, 1]))
-  const y = useSpring(useTransform(progress, inputRange, [100, 0]))
+  const opacity = useSpring(useTransform(progress, inputRange, [0, 1]))
+  const y = useSpring(useTransform(progress, inputRange, [10, 0]))
 
   return (
     <motion.div
       style={{
-        scale,
+        opacity,
         y,
       }}
       className={classes.root}

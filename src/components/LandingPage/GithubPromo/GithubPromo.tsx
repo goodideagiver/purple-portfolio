@@ -35,16 +35,14 @@ export const GithubPromo = () => {
 
   const commitSquareCount = screen && screen.width > 600 ? 9 * 10 : 8 * 6
 
-  const scale = useSpring(
-    useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0])
-  )
+  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0])
 
   return (
     <div id='projects' ref={ref} className={classes.root}>
       <div className={classes.sticky}>
         <div>
           <motion.a
-            style={{ scale }}
+            style={{ opacity }}
             className={classes.link}
             href='https://github.com/goodideagiver'
           >
