@@ -42,8 +42,13 @@
   width: 100%;
   h2 {
     font-size: 1.2rem;
-    padding-top: 4px;
     font-weight: normal;
+  }
+  .infoWrapper {
+    padding-top: 2px;
+    display: flex;
+    gap: 4px;
+    align-items: center;
   }
 }
 
@@ -86,6 +91,13 @@
   box-shadow: inset 1px 3px 5px rgba(255, 255, 255, 0.4),
     inset rgba(0, 0, 0, 0.6) 0 -2px 5px;
   border: none;
+
+  &:hover {
+    .cta {
+      color: blue;
+      text-decoration: underline;
+    }
+  }
 }
 
 .grid {
@@ -101,6 +113,15 @@
   justify-items: center;
   width: 100%;
   max-width: 70vw;
-  background-color: white;
+  background-color: #d6dff7;
   padding: 2rem;
+}
+
+.cta {
+  background-color: #d6dff7;
+  width: 100%;
+  color: black;
+  font-family: monospace;
+  text-align: center;
+  padding-bottom: 8px;
 }
