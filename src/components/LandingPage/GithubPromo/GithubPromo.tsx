@@ -33,7 +33,7 @@ export const GithubPromo = () => {
           >
             <div className={classes.header}>
               <h2 className={classes.title}>Visit my GitHub</h2>
-              <button className={oldnotepad.close}>x</button>
+              <button className={oldnotepad.close}></button>
             </div>
             <div className={classes.grid}>
               {Array.from({ length: commitSquareCount }).map((_, index) => {
