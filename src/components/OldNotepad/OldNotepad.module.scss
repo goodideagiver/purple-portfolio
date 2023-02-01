@@ -86,6 +86,7 @@
   justify-content: flex-end;
   flex-shrink: 0;
   flex-basis: auto;
+  gap: 2px;
 }
 
 .toolbar {
@@ -109,12 +110,15 @@
   height: 20px;
   border-radius: 2px;
   background-color: #2767ea;
-  margin: 0 2px;
   cursor: pointer;
   border: white 1px solid;
   position: relative;
   box-shadow: inset 1px 3px 5px rgba(255, 255, 255, 0.4),
     inset rgba(0, 0, 0, 0.6) 0 -2px 5px;
+  @media (max-width: 600px) {
+    width: 25px;
+    height: 25px;
+  }
 }
 
 .minimize {
