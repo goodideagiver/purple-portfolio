@@ -22,11 +22,22 @@
   overflow: hidden;
 }
 
+.textWrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-y: hidden;
+  padding-top: 3rem;
+  justify-content: center;
+}
+
 .text {
   text-align: justify;
   max-width: 600px;
+  overflow-y: auto;
+  flex: 1;
 
-  font-size: 1.5rem;
+  font-size: 1.6rem;
 
   display: flex;
   gap: 1rem;
@@ -34,14 +45,20 @@
   .link {
     text-decoration: underline;
   }
+  @media screen and (max-width: 900px) {
+    font-size: 1.4rem;
+  }
+  @media screen and (max-width: 780px) {
+    font-size: 1.1rem;
+  }
 }
 
 .links {
   display: flex;
   gap: 1rem;
-  align-items: center;
-  margin-top: 3rem;
+  align-items: flex-end;
   justify-content: center;
+  margin: 2rem 0;
 
   .externalLink {
     text-decoration: none;
@@ -66,12 +83,18 @@
   place-items: center;
   position: relative;
   width: min(1000px, 98%);
-  height: 90%;
+  height: auto;
+  max-height: 90%;
   background-color: rgba(5, 5, 5, 0.5);
   backdrop-filter: blur(150px) saturate(200%) brightness(150%);
   border: transparentize(colors.$brandPrimary, 0.8) 4px solid;
   background-blend-mode: luminosity;
   border-radius: 1rem;
+  @media (max-width: 780px) {
+    background-color: rgba(5, 5, 5, 0.3);
+    border: transparentize(colors.$brandPrimary, 0.8) 1px solid;
+    backdrop-filter: blur(80px) saturate(200%) brightness(150%);
+  }
 }
 
 .circleWrapper {

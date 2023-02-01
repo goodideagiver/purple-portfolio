@@ -7,14 +7,16 @@ import { portfolioItems } from './portfolioItems'
 import { useScreen } from 'usehooks-ts'
 import oldnotepad from '../../OldNotepad/OldNotepad.module.scss'
 
-const commitSquareCount = 9 * 10
-
 export const GithubPromo = () => {
   const ref = useRef<HTMLDivElement>(null)
 
   const { scrollYProgress } = useScroll({
     target: ref,
   })
+
+  const screen = useScreen()
+
+  const commitSquareCount = screen && screen.width > 600 ? 9 * 10 : 8 * 6
 
   const scale = useSpring(
     useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0])
