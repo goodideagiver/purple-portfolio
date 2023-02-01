@@ -5,6 +5,7 @@ import classes from './GithubPromo.module.scss'
 import { PortfolioItem } from './PortfolioItem/PortfolioItem'
 import { portfolioItems } from './portfolioItems'
 import { useScreen } from 'usehooks-ts'
+import oldnotepad from '../../OldNotepad/OldNotepad.module.scss'
 
 const commitSquareCount = 9 * 10
 
@@ -15,11 +16,9 @@ export const GithubPromo = () => {
     target: ref,
   })
 
-  const screen = useScreen()
-
-  const isMobile = screen && screen?.width < 768
-
-  const scale = useSpring(useTransform(scrollYProgress, [0, 0.2], [0, 1]))
+  const scale = useSpring(
+    useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0])
+  )
 
   return (
     <div id='projects' ref={ref} className={classes.root}>
@@ -32,6 +31,7 @@ export const GithubPromo = () => {
           >
             <div className={classes.header}>
               <h2 className={classes.title}>Visit my GitHub</h2>
+              <button className={oldnotepad.close}>x</button>
             </div>
             <div className={classes.grid}>
               {Array.from({ length: commitSquareCount }).map((_, index) => {
