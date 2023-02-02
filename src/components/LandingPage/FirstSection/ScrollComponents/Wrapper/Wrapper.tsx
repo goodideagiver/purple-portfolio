@@ -1,4 +1,4 @@
-import classes from './Wrapper.module.scss'
+import clsx from 'clsx'
 import {
   motion,
   MotionStyle,
@@ -6,17 +6,15 @@ import {
   useMotionValue,
   useTransform,
 } from 'framer-motion'
-import { ElementType, ReactNode, useEffect, useRef } from 'react'
-import clsx from 'clsx'
+import { HTMLProps, ReactNode } from 'react'
+import classes from './Wrapper.module.scss'
 
-type MotionDiv = Omit<ElementType<HTMLDivElement>, 'className'>
+type MotionDiv = Pick<HTMLProps<HTMLDivElement>, 'className'>
 
-interface Props extends MotionDiv {
+type Props = MotionDiv & {
   children?: ReactNode
   style?: MotionStyle
   opacity?: MotionValue<number>
-  className?: string
-  //fuszera z tymi propsami
 }
 
 export const Wrapper = ({

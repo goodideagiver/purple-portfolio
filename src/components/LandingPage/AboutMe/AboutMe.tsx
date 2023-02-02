@@ -56,14 +56,38 @@ export const AboutMe = () => {
         <div className={classes.circleWrapper}></div>
         <div className={classes.square}>
           <Avatar />
-          <div>
-            <h2>About me</h2>
-            <p className={classes.text}>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt
-              itaque maiores ea, laudantium est dolore voluptatem nam recusandae
-              facere sequi omnis quasi eius quia exercitationem inventore in
-              molestiae aspernatur. Architecto?
-            </p>
+          <div className={classes.textWrapper}>
+            <h2 className={classes.title}>About me</h2>
+            <div className={classes.text}>
+              <div>Hello, my name is Karol.</div>{' '}
+              <p>
+                {`So far I've been coding almost every day for many months already
+                and it's reflected on my GitHub profile.`}
+              </p>
+              <p>
+                In the past I used to create 2D animation, design 2D graphics
+                and shoot portrait photography, the skills developed while doing
+                that helped me a lot in learning web development.
+              </p>
+              <p>
+                I am currently working at{' '}
+                <a className={classes.link} href='https://appunite.com/'>
+                  AppUnite
+                </a>{' '}
+                as a Frontend Web Developer.
+              </p>
+            </div>
+            <div className={classes.links}>
+              <a
+                className={classes.externalLink}
+                href='https://github.com/goodideagiver'
+              >
+                My GitHub
+              </a>
+              <a className={classes.externalLink} href='#contact'>
+                Contact me
+              </a>
+            </div>
           </div>
         </div>
       </div>

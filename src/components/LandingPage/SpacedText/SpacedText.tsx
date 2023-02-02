@@ -5,7 +5,7 @@ import classes from './SpacedText.module.scss'
 import { SpacedWord } from './SpacedWord/SpacedWord'
 import { HTMLAttributes } from 'react'
 
-export interface Props extends HTMLAttributes<HTMLElement> {
+export type Props = HTMLAttributes<HTMLElement> & {
   href?: string
   external?: boolean
   text: string

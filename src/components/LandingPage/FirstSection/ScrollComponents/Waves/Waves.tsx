@@ -7,7 +7,7 @@ type Props = {
 }
 
 export const Waves = ({ scrollProgress }: Props) => {
-  const opacity = useTransform(scrollProgress, [0.8, 0.85], [0, 1])
+  const opacity = useTransform(scrollProgress, [0.8, 0.85], [0, 0.1])
   const backgroundPositionY = useTransform(
     scrollProgress,
     [0.8, 1],
