@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import { HTMLAttributes, ReactNode } from 'react'
 import classes from './Subtitle.module.scss'
 
-interface Props extends HTMLAttributes<HTMLParagraphElement> {
+type Props = HTMLAttributes<HTMLParagraphElement> & {
   children: ReactNode
 }
 
