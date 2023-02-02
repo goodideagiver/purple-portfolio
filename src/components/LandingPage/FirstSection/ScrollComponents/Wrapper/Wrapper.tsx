@@ -9,7 +9,7 @@ import {
 import { HTMLProps, ReactNode } from 'react'
 import classes from './Wrapper.module.scss'
 
-type MotionDiv = HTMLProps<HTMLDivElement>
+type MotionDiv = Pick<HTMLProps<HTMLDivElement>, 'className'>
 
 type Props = MotionDiv & {
   children?: ReactNode
