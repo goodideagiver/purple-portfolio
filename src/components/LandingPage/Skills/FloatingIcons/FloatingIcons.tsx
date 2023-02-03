@@ -5,12 +5,10 @@ import classes from './FloatingIcons.module.scss'
 const iconProps: {
   width: number
   height: number
-  ariaHidden: boolean
   className: string
 } = {
   width: 90,
   height: 90,
-  ariaHidden: true,
   className: classes.icon,
 }
 
@@ -32,6 +30,7 @@ export const FloatingIcons = ({ progress }: Props) => {
       className={classes.root}
     >
       <Image
+        aria-hidden='true'
         style={{
           translate: '250px 50px',
           borderRadius: '8px',
@@ -41,6 +40,7 @@ export const FloatingIcons = ({ progress }: Props) => {
         alt=''
       />
       <Image
+        aria-hidden='true'
         style={{
           translate: '-250px -50px',
         }}
@@ -49,6 +49,7 @@ export const FloatingIcons = ({ progress }: Props) => {
         alt=''
       />
       <Image
+        aria-hidden='true'
         style={{
           translate: '50px 250px',
           filter: 'invert(1)',
@@ -58,6 +59,7 @@ export const FloatingIcons = ({ progress }: Props) => {
         alt=''
       />
       <Image
+        aria-hidden='true'
         style={{
           translate: '-50px -250px',
           filter: 'invert(1)',
@@ -67,6 +69,7 @@ export const FloatingIcons = ({ progress }: Props) => {
         alt=''
       />
       <Image
+        aria-hidden='true'
         style={{
           translate: '170px -230px',
         }}
