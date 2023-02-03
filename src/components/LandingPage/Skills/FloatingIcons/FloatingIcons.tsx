@@ -1,3 +1,4 @@
+import { MotionValue, motion, useTransform, useSpring } from 'framer-motion'
 import Image from 'next/image'
 import classes from './FloatingIcons.module.scss'
 
@@ -13,9 +14,23 @@ const iconProps: {
   className: classes.icon,
 }
 
-export const FloatingIcons = () => {
+type Props = {
+  progress: MotionValue<number>
+}
+
+export const FloatingIcons = ({ progress }: Props) => {
+  const x = useSpring(useTransform(progress, [0.2, 1], [-50, 50]), {
+    bounce: 0,
+    damping: 15,
+  })
+
   return (
-    <div className={classes.root}>
+    <motion.div
+      style={{
+        x,
+      }}
+      className={classes.root}
+    >
       <Image
         style={{
           translate: '250px 50px',
@@ -59,6 +74,6 @@ export const FloatingIcons = () => {
         {...iconProps}
         alt=''
       />
-    </div>
+    </motion.div>
   )
 }

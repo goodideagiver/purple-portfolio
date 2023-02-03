@@ -70,7 +70,7 @@ export const Skills = () => {
   return (
     <div ref={scrollRef} className={classes.scrollRoot}>
       <div className={classes.root}>
-        <FloatingIcons />
+        <FloatingIcons progress={scrollYProgress} />
         <motion.div ref={skillsRef} style={{ x }} className={classes.skills}>
           <h2 className={classes.title}>My skills</h2>
           {skills.map((skill, index) => (
