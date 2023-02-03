@@ -1,6 +1,7 @@
 import { useScroll, useTransform, motion, useSpring } from 'framer-motion'
 import { useRef, useState, useEffect } from 'react'
 import { useIsClient } from 'usehooks-ts'
+import { FloatingIcons } from './FloatingIcons/FloatingIcons'
 import { Skill } from './Skill/Skill'
 import classes from './Skills.module.scss'
 
@@ -49,7 +50,6 @@ export const Skills = () => {
       stiffness: 100,
     }
   )
-  //mozna jeszcze odjac odlegosc srodka kafelka skill od srodka ekranu i przesunac o tyle i wtedy bedzie konczylo sie na srodku a nie poza ekranem
 
   useEffect(() => {
     const windowResizeHandler = () => {
@@ -70,6 +70,7 @@ export const Skills = () => {
   return (
     <div ref={scrollRef} className={classes.scrollRoot}>
       <div className={classes.root}>
+        <FloatingIcons />
         <motion.div ref={skillsRef} style={{ x }} className={classes.skills}>
           <h2 className={classes.title}>My skills</h2>
           {skills.map((skill, index) => (

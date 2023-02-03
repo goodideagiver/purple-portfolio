@@ -14,8 +14,8 @@ export const Skill = forwardRef<HTMLDivElement, Props>(function Skill(
     <div
       ref={ref}
       style={{
-        backgroundImage: `linear-gradient(45deg, ${color} 25%, transparent 25%, transparent 50%, ${color} 50%, ${color} 75%, transparent 75%, transparent)`,
-        boxShadow: `0 0 0 0.5rem ${color} inset`,
+        backgroundColor: color + '15',
+        boxShadow: `0 0 0 1px ${color} inset,inset 0 -30px 50px -30px ${color}`,
       }}
       className={classes.root}
     >
