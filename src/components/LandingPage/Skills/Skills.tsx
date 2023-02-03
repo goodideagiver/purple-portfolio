@@ -28,7 +28,7 @@ const skills: {
   {
     text: 'Next.js',
     icon: '/next.svg',
-    color: 'gray',
+    color: '#ffffff',
   },
 ]
 
