@@ -8,25 +8,8 @@ import { GithubPromo } from './GithubPromo/GithubPromo'
 import classes from './LandingPage.module.scss'
 import { Section } from './Section/Section'
 import { ShinySquare } from './ShinySquare/ShinySquare'
+import { Skills } from './Skills/Skills'
 import { Props as wordsForSection } from './SpacedText/SpacedText'
-
-const secondSection: wordsForSection[] = [
-  {
-    text: 'Projects',
-    id: 'projects',
-    style: { scrollMargin: '25vh' },
-  },
-  {
-    text: 'Bewebdev.tech',
-    href: 'https://bewebdev.tech',
-    external: true,
-  },
-  {
-    text: 'How to ask good questions',
-    href: 'https://goodideagiver.github.io/how-to-ask-good-questions/',
-    external: true,
-  },
-]
 
 const thirdSection: wordsForSection[] = [
   {
@@ -47,36 +30,6 @@ const thirdSection: wordsForSection[] = [
     text: 'LinkedIn',
     href: 'https://www.linkedin.com/in/karol-bartkiewicz/',
     external: true,
-  },
-]
-
-const skills: {
-  text: string
-  icon?: string
-  color?: string
-}[] = [
-  {
-    text: 'My skills:',
-  },
-  {
-    text: 'TypeScript',
-    icon: '/typescript.svg',
-    color: '#007ACC',
-  },
-  {
-    text: 'React',
-    icon: '/react.svg',
-    color: '#54BDDA',
-  },
-  {
-    text: 'SCSS',
-    icon: '/sass.png',
-    color: '#CC669B',
-  },
-  {
-    text: 'Next.js',
-    icon: '/next.svg',
-    color: 'gray',
   },
 ]
 
@@ -107,7 +60,7 @@ export const LandingPage = () => {
       />
       <div className={classes.scrollSnap}>
         <FirstSection />
-        <SideScroll offset={offset} scrollDistanceMultiplier={0.7}>
+        {/* <SideScroll offset={offset} scrollDistanceMultiplier={0.7}>
           {skills.map(({ text, icon, color }, index) => (
             <div
               ref={promoSquareRef}
@@ -128,7 +81,8 @@ export const LandingPage = () => {
               </SkillSquare>
             </div>
           ))}
-        </SideScroll>
+        </SideScroll> */}
+        <Skills />
         <AboutMe />
         <GithubPromo />
         <Section words={thirdSection} />
