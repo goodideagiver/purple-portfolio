@@ -7,8 +7,8 @@ const iconProps: {
   height: number
   className: string
 } = {
-  width: 90,
-  height: 90,
+  width: 40,
+  height: 40,
   className: classes.icon,
 }
 
@@ -16,67 +16,57 @@ type Props = {
   progress: MotionValue<number>
 }
 
+const icons = [
+  '/typescript.svg',
+  '/sass.png',
+  '/next.svg',
+  '/vercel.svg',
+  '/react.svg',
+]
+
 export const FloatingIcons = ({ progress }: Props) => {
   const x = useSpring(useTransform(progress, [0.2, 1], [-50, 50]), {
     bounce: 0,
     damping: 15,
   })
 
+  const rotate = useSpring(useTransform(progress, [0.2, 1], [0, 360]))
+
+  const iconRotate = useSpring(useTransform(progress, [0.2, 1], [0, -360]))
+
   return (
-    <motion.div
-      style={{
-        x,
-      }}
-      className={classes.root}
-    >
-      <Image
-        aria-hidden='true'
-        style={{
-          translate: '250px 50px',
-          borderRadius: '8px',
-        }}
-        src='/typescript.svg'
-        {...iconProps}
-        alt=''
-      />
-      <Image
-        aria-hidden='true'
-        style={{
-          translate: '-250px -50px',
-        }}
-        src='/sass.png'
-        {...iconProps}
-        alt=''
-      />
-      <Image
-        aria-hidden='true'
-        style={{
-          translate: '50px 250px',
-          filter: 'invert(1)',
-        }}
-        src='/next.svg'
-        {...iconProps}
-        alt=''
-      />
-      <Image
-        aria-hidden='true'
-        style={{
-          translate: '-50px -250px',
-          filter: 'invert(1)',
-        }}
-        src='/vercel.svg'
-        {...iconProps}
-        alt=''
-      />
-      <Image
-        aria-hidden='true'
-        style={{
-          translate: '170px -230px',
-        }}
-        src='/react.svg'
-        {...iconProps}
-        alt=''
-      />
+    <motion.div className={classes.root}>
+      {icons.map((icon, index) => (
+        <motion.div
+          style={{
+            x: '-50%',
+            y: '-50%',
+            scale: 1 + index / 3,
+            rotate,
+          }}
+          key={index}
+          className={classes.iconContainer}
+        >
+          <motion.div
+            className={classes.icon}
+            style={{
+              rotate: iconRotate,
+            }}
+          >
+            <Image
+              style={{
+                filter:
+                  icon === '/vercel.svg' || icon === '/next.svg'
+                    ? 'invert(1)'
+                    : 'none',
+              }}
+              src={icon}
+              alt='icon'
+              {...iconProps}
+            />
+          </motion.div>
+        </motion.div>
+      ))}
     </motion.div>
   )
 }
