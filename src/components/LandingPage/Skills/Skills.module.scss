@@ -35,10 +35,13 @@
 
 .skills {
   display: flex;
-  gap: 5rem;
+  gap: 10rem;
   height: 100%;
   align-items: center;
   width: fit-content;
+  @media (max-width: 1500px) {
+    gap: 5rem;
+  }
   @media (max-width: 800px) {
     gap: 1rem;
   }

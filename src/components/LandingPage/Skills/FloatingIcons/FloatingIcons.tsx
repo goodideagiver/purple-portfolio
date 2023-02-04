@@ -1,6 +1,7 @@
 import { MotionValue, motion, useTransform, useSpring } from 'framer-motion'
 import Image from 'next/image'
 import classes from './FloatingIcons.module.scss'
+import { Icon } from './Icon/Icon'
 
 const iconProps: {
   width: number
@@ -25,47 +26,10 @@ const icons = [
 ]
 
 export const FloatingIcons = ({ progress }: Props) => {
-  const x = useSpring(useTransform(progress, [0.2, 1], [-50, 50]), {
-    bounce: 0,
-    damping: 15,
-  })
-
-  const rotate = useSpring(useTransform(progress, [0.2, 1], [0, 360]))
-
-  const iconRotate = useSpring(useTransform(progress, [0.2, 1], [0, -360]))
-
   return (
     <motion.div className={classes.root}>
       {icons.map((icon, index) => (
-        <motion.div
-          style={{
-            x: '-50%',
-            y: '-50%',
-            scale: 1 + index / 3,
-            rotate,
-          }}
-          key={index}
-          className={classes.iconContainer}
-        >
-          <motion.div
-            className={classes.icon}
-            style={{
-              rotate: iconRotate,
-            }}
-          >
-            <Image
-              style={{
-                filter:
-                  icon === '/vercel.svg' || icon === '/next.svg'
-                    ? 'invert(1)'
-                    : 'none',
-              }}
-              src={icon}
-              alt='icon'
-              {...iconProps}
-            />
-          </motion.div>
-        </motion.div>
+        <Icon key={index} index={index} progress={progress} src={icon} />
       ))}
     </motion.div>
   )

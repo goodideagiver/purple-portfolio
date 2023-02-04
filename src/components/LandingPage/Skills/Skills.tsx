@@ -4,6 +4,7 @@ import { useIsClient } from 'usehooks-ts'
 import { FloatingIcons } from './FloatingIcons/FloatingIcons'
 import { Skill } from './Skill/Skill'
 import classes from './Skills.module.scss'
+import { Stars } from './Stars/Stars'
 
 const skills: {
   text: string
@@ -18,7 +19,7 @@ const skills: {
   {
     text: 'React',
     icon: '/react.svg',
-    color: '#54BDDA',
+    color: '#7ed6f8',
   },
   {
     text: 'SCSS',
@@ -70,6 +71,7 @@ export const Skills = () => {
   return (
     <div ref={scrollRef} className={classes.scrollRoot}>
       <div className={classes.root}>
+        <Stars progress={scrollYProgress} />
         <FloatingIcons progress={scrollYProgress} />
         <motion.div ref={skillsRef} style={{ x }} className={classes.skills}>
           <h2 className={classes.title}>My skills</h2>
