@@ -24,6 +24,7 @@ export const Stars = ({ progress }: Props) => {
       <Image
         width={3000}
         height={3000}
+        sizes='(max-width: 600px) 300px, 600px'
         className={classes.image}
         src='/stars.jpeg'
         alt=''
