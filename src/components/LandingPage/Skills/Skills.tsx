@@ -1,6 +1,5 @@
-import { useScroll, useTransform, motion, useSpring } from 'framer-motion'
+import { useScroll, useTransform, motion } from 'framer-motion'
 import { useRef, useState, useEffect } from 'react'
-import { useIsClient } from 'usehooks-ts'
 import { FloatingIcons } from './FloatingIcons/FloatingIcons'
 import { Skill } from './Skill/Skill'
 import classes from './Skills.module.scss'
@@ -43,14 +42,7 @@ export const Skills = () => {
     target: scrollRef,
   })
 
-  const x = useSpring(
-    useTransform(scrollYProgress, [0.1, 1], [0, -skillsWidth]),
-    {
-      damping: 15,
-      mass: 0.27,
-      stiffness: 100,
-    }
-  )
+  const x = useTransform(scrollYProgress, [0.1, 1], [0, -skillsWidth])
 
   useEffect(() => {
     const windowResizeHandler = () => {

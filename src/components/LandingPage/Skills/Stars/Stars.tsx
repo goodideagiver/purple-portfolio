@@ -13,7 +13,7 @@ const physics = {
 }
 
 export const Stars = ({ progress }: Props) => {
-  const x = useSpring(useTransform(progress, [0.1, 1], [0, -20]), physics)
+  const x = useTransform(progress, [0.1, 1], [0, -20])
   return (
     <motion.div
       style={{

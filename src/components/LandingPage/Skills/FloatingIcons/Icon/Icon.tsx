@@ -35,14 +35,16 @@ export const Icon = ({ index, progress, src }: Props) => {
   const rotation = RANGE * reverse * speed
   const offset = 1000 * index * speed * reverse
 
-  const rotate = useSpring(
-    useTransform(progress, [0.1, 1], [offset + 0, offset + rotation]),
-    physics
+  const rotate = useTransform(
+    progress,
+    [0.1, 1],
+    [offset + 0, offset + rotation]
   )
 
-  const iconRotate = useSpring(
-    useTransform(progress, [0.1, 1], [-offset + 0, -offset - rotation]),
-    physics
+  const iconRotate = useTransform(
+    progress,
+    [0.1, 1],
+    [-offset + 0, -offset - rotation]
   )
 
   return (
