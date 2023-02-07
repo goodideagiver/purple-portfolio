@@ -1,6 +1,5 @@
-import { useScroll, useTransform, motion, useSpring } from 'framer-motion'
-import { useRef, useState, useEffect } from 'react'
-import { useIsClient } from 'usehooks-ts'
+import { motion, useScroll, useSpring, useTransform } from 'framer-motion'
+import { useEffect, useRef, useState } from 'react'
 import { FloatingIcons } from './FloatingIcons/FloatingIcons'
 import { Skill } from './Skill/Skill'
 import classes from './Skills.module.scss'
