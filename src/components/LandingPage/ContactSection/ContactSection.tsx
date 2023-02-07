@@ -1,4 +1,5 @@
-import { useScroll, motion, useTransform } from 'framer-motion'
+import clsx from 'clsx'
+import { useScroll, motion, useTransform, useInView } from 'framer-motion'
 import Image from 'next/image'
 import { useRef } from 'react'
 import classes from './ContactSection.module.scss'
@@ -22,23 +23,16 @@ const thirdSection = [
 
 export const ContactSection = () => {
   const scrollRef = useRef<HTMLDivElement>(null)
-  const { scrollYProgress } = useScroll({
-    target: scrollRef,
+
+  const inView = useInView(scrollRef, {
+    amount: 0.9,
   })
 
-  const backgroundPosition = useTransform(
-    scrollYProgress,
-    [0, 1],
-    ['center 0%', 'center 100%']
-  )
-
   return (
-    <div ref={scrollRef} className={classes.scrollRoot}>
+    <div className={classes.scrollRoot}>
       <motion.div
-        style={{
-          backgroundPosition: backgroundPosition,
-        }}
-        className={classes.root}
+        ref={scrollRef}
+        className={clsx(classes.root, inView && classes.visible)}
       >
         <div className={classes.contentWrapper}>
           <div className={classes.wave}>

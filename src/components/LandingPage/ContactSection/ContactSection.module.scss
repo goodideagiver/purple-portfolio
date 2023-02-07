@@ -13,8 +13,13 @@
     to bottom,
     black,
     colors.$brandPrimary 20%,
-    black 120%
+    black
   );
+  transition: background-size 3s ease, background-position 3s ease;
+  &.visible {
+    background-size: 100% 200%;
+    background-position: 0;
+  }
 }
 
 .scrollRoot {
