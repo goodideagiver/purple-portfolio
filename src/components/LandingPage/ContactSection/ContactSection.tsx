@@ -23,9 +23,15 @@ const thirdSection = [
 
 export const ContactSection = () => {
   const scrollRef = useRef<HTMLDivElement>(null)
+  const avatarRef = useRef<HTMLDivElement>(null)
 
   const inView = useInView(scrollRef, {
     amount: 0.9,
+  })
+
+  const avatarInView = useInView(avatarRef, {
+    amount: 1,
+    once: true,
   })
 
   return (
@@ -34,8 +40,15 @@ export const ContactSection = () => {
         ref={scrollRef}
         className={clsx(classes.root, inView && classes.visible)}
       >
-        <div className={classes.contentWrapper}>
-          <div className={classes.wave}>
+        <div ref={avatarRef} className={classes.contentWrapper}>
+          <motion.div
+            style={{
+              scale: avatarInView ? 1 : 0.8,
+              opacity: avatarInView ? 1 : 0,
+              transition: 'all 0.9s cubic-bezier(0.16, 1, 0.3, 1)',
+            }}
+            className={classes.wave}
+          >
             <Image
               className={classes.image}
               src='/purple.png'
@@ -43,7 +56,7 @@ export const ContactSection = () => {
               width={500}
               height={500}
             />
-          </div>
+          </motion.div>
           <h2 id='contact' className={classes.title}>
             Contact me
           </h2>

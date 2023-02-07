@@ -15,15 +15,17 @@
     colors.$brandPrimary 20%,
     black
   );
-  transition: background-size 3s ease, background-position 3s ease;
+  background-size: 100% 100%;
+  background-position: 0;
+  transition: background-size 0.5s ease;
   &.visible {
+    transition: background-size 3s ease;
     background-size: 100% 200%;
-    background-position: 0;
   }
 }
 
 .scrollRoot {
-  height: 3000px;
+  height: auto;
 }
 
 .contentWrapper {
