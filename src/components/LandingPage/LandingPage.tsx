@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import { useEffect, useRef, useState } from 'react'
 import { HeadSeo } from '../HeadSeo/HeadSeo'
 import { AboutMe } from './AboutMe/AboutMe'

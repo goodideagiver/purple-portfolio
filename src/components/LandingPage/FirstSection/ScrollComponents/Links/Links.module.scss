@@ -1,6 +1,4 @@
-.root {
-  background-color: red;
-}
+@use '/styles/lib/colors.scss' as colors;
 
 .subtitle {
   margin: 0;
@@ -11,6 +9,7 @@
   font-size: 7rem;
   margin: 0;
   line-height: 0.7;
+  color: colors.$brandComplementary;
 }
 
 @media (max-width: 1180px) {
@@ -43,7 +42,7 @@
   }
 }
 
-@media (max-width: 380px) {
+@media (max-width: 450px) {
   .title {
     font-size: 2rem;
     line-height: 1;
@@ -64,15 +63,17 @@
 }
 
 .link {
-  border: 2px white solid;
-  padding: 0.5rem 1rem;
-  border-radius: 1rem;
-  flex: 1;
+  border: 2px colors.$brandPrimary solid;
+  padding: 0.8rem 1rem;
+  border-radius: 1.5em;
+  flex: 1 0 90px;
+  font-size: 1.2rem;
+  color: colors.$brandPrimary;
   text-align: center;
   font-weight: bold;
   transition: color 0.1s, background-color 0.2s;
   &:hover {
-    background-color: white;
+    background-color: colors.$brandPrimary;
     color: black;
   }
 }

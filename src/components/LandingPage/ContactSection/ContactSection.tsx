@@ -1,14 +1,10 @@
 import clsx from 'clsx'
 import { useScroll, motion, useTransform, useInView } from 'framer-motion'
 import Image from 'next/image'
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import classes from './ContactSection.module.scss'
 
 const thirdSection = [
-  {
-    text: 'E-mail',
-    href: 'mailto:contact@purpleblack.dev',
-  },
   {
     text: 'Discord',
     href: 'https://discord.gg/kGsCDes7VU',
@@ -22,8 +18,25 @@ const thirdSection = [
 ] as const
 
 export const ContactSection = () => {
+  const [emailButtonText, setEmailButtonText] = useState<
+    'Copied!' | 'Error' | 'E-mail'
+  >('E-mail')
   const scrollRef = useRef<HTMLDivElement>(null)
   const avatarRef = useRef<HTMLDivElement>(null)
+
+  const emailButtonClickHandler = async () => {
+    if (emailButtonText !== 'E-mail') return
+    try {
+      await navigator.clipboard.writeText('contact@purpleblack.dev')
+      setEmailButtonText('Copied!')
+    } catch (error) {
+      setEmailButtonText('Error')
+    } finally {
+      setTimeout(() => {
+        setEmailButtonText('E-mail')
+      }, 2000)
+    }
+  }
 
   const inView = useInView(scrollRef, {
     amount: 0.9,
@@ -61,6 +74,14 @@ export const ContactSection = () => {
             Contact me
           </h2>
           <ul className={classes.list}>
+            <li>
+              <button
+                onClick={emailButtonClickHandler}
+                className={classes.link}
+              >
+                {emailButtonText}
+              </button>
+            </li>
             {thirdSection.map(({ href, text }, index) => (
               <li key={index + text}>
                 <a className={classes.link} href={href}>
