@@ -1,3 +1,5 @@
+@use '/styles/lib/colors.scss' as colors;
+
 .root {
   position: absolute;
   pointer-events: none;
@@ -22,7 +24,7 @@
     top: 0;
     left: 0;
     padding: 2rem;
-    border: 2px solid white;
+    border: 2px solid colors.$brandPrimary;
     border-radius: 100%;
     transform: translate(-50%, -50%);
   }

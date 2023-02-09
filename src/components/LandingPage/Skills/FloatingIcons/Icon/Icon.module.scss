@@ -1,13 +1,26 @@
+@use '/styles/lib/colors.scss' as colors;
+
 .root {
   position: absolute;
   pointer-events: none;
   user-select: none;
   top: 50%;
   left: 50%;
-  border: 1px rgba(255, 255, 255, 0.45) solid;
+  box-shadow: inset 0 0 0 1px transparentize(colors.$brandPrimary, 0.8);
   height: min(70vh, 70vw);
   aspect-ratio: 1/1;
   border-radius: 100%;
+}
+
+@for $i from 1 through 10 {
+  .root:nth-child(#{$i}) {
+    box-shadow: inset
+      0
+      0
+      0
+      1px
+      transparentize(colors.$brandPrimary, 1 * (1 - 0.08 * $i));
+  }
 }
 
 .icon {
@@ -17,16 +30,14 @@
   transform: translate(-50%, -50%);
   top: 50%;
   left: 0%;
+  border-radius: 4px;
   &::before {
     width: 100%;
     height: 100%;
     content: '';
-    background-color: black;
     position: absolute;
     top: 0;
     left: 0;
-    padding: 2rem;
-    border: 1px solid white;
     border-radius: 100%;
     transform: translate(-50%, -50%);
   }
