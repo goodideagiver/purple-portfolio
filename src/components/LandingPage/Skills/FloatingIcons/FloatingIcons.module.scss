@@ -1,0 +1,43 @@
+@use '/styles/lib/colors.scss' as colors;
+
+.root {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+  width: 100%;
+  height: 100%;
+}
+
+.icon {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 0%;
+  &::before {
+    width: 100%;
+    height: 100%;
+    content: '';
+    background-color: black;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 2rem;
+    border: 2px solid colors.$brandPrimary;
+    border-radius: 100%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.iconContainer {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+  top: 50%;
+  left: 50%;
+  border: 2px white solid;
+  height: min(70vh, 70vw);
+  aspect-ratio: 1/1;
+  border-radius: 100%;
+}

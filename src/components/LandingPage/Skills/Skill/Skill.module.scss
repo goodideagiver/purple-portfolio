@@ -1,0 +1,27 @@
+.root {
+  padding: 2rem;
+  height: min(50vh, 50vw);
+  aspect-ratio: 1/1;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  max-width: 60vw;
+  overflow: hidden;
+  @media (min-width: 900px) {
+    backdrop-filter: blur(10px) saturate(200%);
+  }
+}
+
+.text {
+  font-size: 4rem;
+  width: 100%;
+  text-align: center;
+  @media (max-width: 900px) {
+    font-size: 2rem;
+  }
+  @media (max-width: 600px) {
+    font-size: 1.5rem;
+  }
+}

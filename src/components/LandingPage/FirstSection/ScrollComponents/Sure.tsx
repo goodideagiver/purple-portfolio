@@ -26,7 +26,7 @@ export const Sure = ({ scrollProgress }: Props) => {
         scale,
       }}
     >
-      <Subtitle>
+      <Subtitle className={classes.subtitle}>
         {`I'm sure`}{' '}
         <motion.span
           style={{

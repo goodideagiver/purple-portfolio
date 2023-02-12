@@ -1,13 +1,12 @@
-import classes from './FirstSection.module.scss'
-import { useRef } from 'react'
 import { useScroll } from 'framer-motion'
-import { Links } from './ScrollComponents/Links/Links'
+import { useRef } from 'react'
+import classes from './FirstSection.module.scss'
 import { AreYouLooking } from './ScrollComponents/AreYouLooking/AreYouLooking'
-import { NotMe } from './ScrollComponents/NotMe'
 import { However } from './ScrollComponents/However'
+import { Links } from './ScrollComponents/Links/Links'
+import { NotMe } from './ScrollComponents/NotMe'
 import { Sure } from './ScrollComponents/Sure'
 import { Waves } from './ScrollComponents/Waves/Waves'
-import { Progress } from './ScrollComponents/Progress/Progress'
 
 export const FirstSection = () => {
   const scrollRef = useRef<HTMLDivElement>(null)
@@ -19,7 +18,7 @@ export const FirstSection = () => {
   return (
     <div ref={scrollRef} className={classes.scrollRoot}>
       <div className={classes.root}>
-        {[Waves, Progress, Links, AreYouLooking, NotMe, However, Sure].map(
+        {[Waves, Links, AreYouLooking, NotMe, However, Sure].map(
           (Component, index) => (
             <Component key={'siema' + index} scrollProgress={scrollProgress} />
           )

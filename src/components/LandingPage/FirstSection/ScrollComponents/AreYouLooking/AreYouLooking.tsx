@@ -22,7 +22,13 @@ export const AreYouLooking = ({ scrollProgress }: Props) => {
           scale,
         }}
       >
-        <Subtitle>Are you looking for the best developer ever?</Subtitle>
+        <Subtitle
+          style={{
+            textAlign: 'center',
+          }}
+        >
+          Are you looking for the best developer ever?
+        </Subtitle>
       </Wrapper>
     </>
   )

@@ -36,6 +36,10 @@ export const AboutMe = () => {
     ['70%', '30%']
   )
 
+  const opacity = useSpring(
+    useTransform(scrollYProgress, [0, 0.1, 0.5, 1], [1, 0, 0, 1]),
+    physics
+  )
   return (
     <section ref={scrollContainer} className={classes.scrollRoot}>
       <div className={classes.root}>
@@ -53,7 +57,10 @@ export const AboutMe = () => {
           }}
           className={classes.circle}
         />
-        <div className={classes.circleWrapper}></div>
+        <motion.div
+          style={{ opacity }}
+          className={classes.circleWrapper}
+        ></motion.div>
         <div className={classes.square}>
           <Avatar />
           <div className={classes.textWrapper}>
